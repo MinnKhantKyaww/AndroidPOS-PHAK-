@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/productsFragment">
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.example.andoridpos.ui.product.ProductsFragment"
+        android:label="fragment_list_item"
+        tools:layout="@layout/fragment_list_item" >
+        <action
+            android:id="@+id/action_productsFragment2_to_productEditFragment"
+            app:destination="@id/productEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.example.andoridpos.ui.category.CategoriesFragment"
+        android:label="fragment_list_item"
+        tools:layout="@layout/fragment_list_item" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_categorieEditFragment"
+            app:destination="@id/categorieEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productEditFragment"
+        android:name="com.example.andoridpos.ui.product.ProductEditFragment"
+        android:label="fragment_product_edit"
+        tools:layout="@layout/fragment_product_edit" />
+    <fragment
+        android:id="@+id/categorieEditFragment"
+        android:name="com.example.andoridpos.ui.category.CategorieEditFragment"
+        android:label="fragment_category_edit"
+        tools:layout="@layout/fragment_category_edit" />
+
+</navigation>
