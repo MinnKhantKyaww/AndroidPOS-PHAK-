@@ -17,20 +17,11 @@
         android:id="@+id/categoriesFragment"
         android:name="com.example.andoridpos.ui.category.CategoriesFragment"
         android:label="fragment_list_item"
-        tools:layout="@layout/fragment_list_item" >
-        <action
-            android:id="@+id/action_categoriesFragment_to_categorieEditFragment"
-            app:destination="@id/categorieEditFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_list_item" />
     <fragment
         android:id="@+id/productEditFragment"
         android:name="com.example.andoridpos.ui.product.ProductEditFragment"
         android:label="fragment_product_edit"
         tools:layout="@layout/fragment_product_edit" />
-    <fragment
-        android:id="@+id/categorieEditFragment"
-        android:name="com.example.andoridpos.ui.category.CategorieEditFragment"
-        android:label="fragment_category_edit"
-        tools:layout="@layout/fragment_category_edit" />
 
 </navigation>

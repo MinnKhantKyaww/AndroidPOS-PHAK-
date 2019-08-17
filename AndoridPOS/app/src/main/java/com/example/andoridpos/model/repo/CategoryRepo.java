@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import com.example.andoridpos.model.dao.CategoryDao;
 import com.example.andoridpos.model.dao.CudDao;
 import com.example.andoridpos.model.entity.Category;
+import com.example.andoridpos.model.vo.CategoryAndProductCountVO;
 
 import java.util.List;
 
@@ -34,5 +35,17 @@ public class CategoryRepo extends CudRepo<Category> {
         return dao.findBySync(id);
     }
 
+    public LiveData<List<CategoryAndProductCountVO>> getCategoryAndProductCount() {
 
+        return dao.findCategoryAndProductCount();
+    }
+
+    public void save(Category category) {
+        if(category.getId() > 0) {
+            super.update(category);
+        } else {
+            super.insert(category);
+        }
+
+    }
 }

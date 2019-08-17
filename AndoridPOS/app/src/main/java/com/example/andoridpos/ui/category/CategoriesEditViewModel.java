@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.andoridpos.R;
 import com.example.andoridpos.ServiceLocator;
 import com.example.andoridpos.model.entity.Category;
 import com.example.andoridpos.model.repo.CategoryRepo;
@@ -14,8 +15,11 @@ import com.example.andoridpos.util.AppExecutors;
 public class CategoriesEditViewModel extends AndroidViewModel {
 
     private CategoryRepo repo;
-    private MutableLiveData<Category> category = new MutableLiveData<>();
+    public final MutableLiveData<Category> category = new MutableLiveData<>();
 
+    public final MutableLiveData<String> error = new MutableLiveData<>();
+    public final MutableLiveData<String> nameError = new MutableLiveData<>();
+    public final MutableLiveData<Boolean> operation = new MutableLiveData<>();
     public CategoriesEditViewModel(@NonNull Application application) {
         super(application);
         this.repo = ServiceLocator.getInstance(application).categoryRepo();
@@ -34,11 +38,27 @@ public class CategoriesEditViewModel extends AndroidViewModel {
     }
 
     public void save() {
-        //TODO
+        if(isValid()) {
+            AppExecutors.io().execute(() -> {
+                try {
+                    repo.save(category.getValue());
+                    operation.postValue(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    operation.postValue(false);
+                    error.postValue(e.getMessage());
+                }
+
+            });
+        }
     }
 
-    public boolean isValid() {
-        // TODO
-        return false;
+    private boolean isValid() {
+        String name = category.getValue().getName();
+        if(name == null || name.isEmpty()) {
+            nameError.setValue(getApplication().getString(R.string.require_cateogry_name));
+            return false;
+        }
+        return true;
     }
 }
