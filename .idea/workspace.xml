@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f869727-3152-4d7e-aa17-c6254934eb61" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AndoridPOS/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AndoridPOS/app/src/main/res/layout/content_notification.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndoridPOS/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndoridPOS/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndoridPOS/app/src/main/java/com/example/andoridpos/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/AndoridPOS/app/src/main/java/com/example/andoridpos/ui/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndoridPOS/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndoridPOS/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7f869727-3152-4d7e-aa17-c6254934eb61" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +28,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -45,9 +40,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Course" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">

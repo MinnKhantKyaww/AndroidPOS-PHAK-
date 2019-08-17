@@ -18,10 +18,8 @@ import android.view.MenuItem;
 import com.example.andoridpos.R;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity {
 
-   // private DrawerSideNav drawerSideNav;
-    private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,56 +28,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout = findViewById(R.id.drawer_layout);
-
-        //DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.navigation_view);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView.setNavigationItemSelectedListener(this);
+        NavigationView navigationView = findViewById(R.id.navigation_view);
+
 
         NavigationUI.setupWithNavController(navigationView, Navigation.findNavController(this, R.id.my_nav_host_fragment));
-
-       /* drawerSideNav.setViewScale(Gravity.START, 0.9f);
-        drawerSideNav.setRadius(Gravity.START, 35);
-        drawerSideNav.setViewElevation(Gravity.START, 20);
-        drawerSideNav.setScrimColor(Color.parseColor("#03A9F4"));*/
     }
 
-    @Override
-    public void onBackPressed() {
-
-        if ((drawerLayout.isDrawerOpen(GravityCompat.START))) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return false;
-    }
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_res, menu);
-        return super.onCreateOptionsMenu(menu);
-    }*/
-
-   /* @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()) {
-            case  R.id.actio
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
 }
