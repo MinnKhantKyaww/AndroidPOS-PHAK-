@@ -14,8 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.andoridpos.BR;
 import com.example.andoridpos.R;
 import com.example.andoridpos.model.vo.CategoryAndProductCountVO;
+import com.example.andoridpos.ui.AdapterItemClickListener;
 
 public class CategoryAndProductAdapter extends ListAdapter<CategoryAndProductCountVO, CategoryAndProductAdapter.CategoryAndProductAdapterViewHolder> {
+
+    private AdapterItemClickListener<CategoryAndProductCountVO> adapterItemClickListener;
 
     private static final DiffUtil.ItemCallback<CategoryAndProductCountVO> DIFF_UTIL = new DiffUtil.ItemCallback<CategoryAndProductCountVO>() {
         @Override
@@ -37,13 +40,17 @@ public class CategoryAndProductAdapter extends ListAdapter<CategoryAndProductCou
     @Override
     public CategoryAndProductAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        ViewDataBinding dataBindingUtil = DataBindingUtil.inflate(layoutInflater, R.layout.layout_category, parent, false);
-        return new CategoryAndProductAdapterViewHolder(dataBindingUtil);
+        ViewDataBinding viewDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.layout_category, parent, false);
+        return new CategoryAndProductAdapterViewHolder(viewDataBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CategoryAndProductAdapterViewHolder holder, int position) {
         holder.bind(getItem(position));
+    }
+
+    public void setAdapterItemClickListener(AdapterItemClickListener<CategoryAndProductCountVO> adapterItemClickListener) {
+        this.adapterItemClickListener = adapterItemClickListener;
     }
 
     class CategoryAndProductAdapterViewHolder extends RecyclerView.ViewHolder {
@@ -53,6 +60,12 @@ public class CategoryAndProductAdapter extends ListAdapter<CategoryAndProductCou
          CategoryAndProductAdapterViewHolder(ViewDataBinding viewDataBinding) {
             super(viewDataBinding.getRoot());
             this.viewDataBinding = viewDataBinding;
+
+            itemView.setOnClickListener(v -> {
+                if(adapterItemClickListener != null) {
+                    adapterItemClickListener.onClick(getItem(getAdapterPosition()));
+                }
+            });
         }
 
          void bind(CategoryAndProductCountVO obj) {

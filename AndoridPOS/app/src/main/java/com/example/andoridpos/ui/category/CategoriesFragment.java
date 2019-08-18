@@ -26,6 +26,11 @@ public class CategoriesFragment extends ListFragment {
     protected RecyclerView.Adapter<? extends RecyclerView.ViewHolder> adapter() {
         if(adapter == null) {
             adapter = new CategoryAndProductAdapter();
+            adapter.setAdapterItemClickListener(vo -> {
+                Bundle args = new Bundle();
+                args.putInt(CategorieEditFragment.KEY_CATEGORY_ID, vo.getCategory().getId());
+                navigateEdit(args);
+            });
         }
         return adapter;
     }
@@ -41,6 +46,11 @@ public class CategoriesFragment extends ListFragment {
 
     @Override
     protected void onFabClick(View view) {
+        navigateEdit(null);
+    }
+
+    private void navigateEdit(Bundle args) {
+
         FragmentTransaction ft = requireFragmentManager().beginTransaction();
         Fragment pref = requireFragmentManager().findFragmentByTag("dialog");
         if(pref != null) {
@@ -48,6 +58,12 @@ public class CategoriesFragment extends ListFragment {
         }
 
         DialogFragment dialogFragment = new CategorieEditFragment();
+
+        if(args != null) {
+            dialogFragment.setArguments(args);
+        }
+
         dialogFragment.show(ft, "dialog");
+
     }
 }

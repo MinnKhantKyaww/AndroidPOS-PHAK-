@@ -6,6 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Query;
 
 import com.example.andoridpos.model.entity.Product;
+import com.example.andoridpos.model.vo.ProductAndCategoryVO;
 
 import java.util.List;
 
@@ -21,4 +22,8 @@ public interface ProductDao extends CudDao<Product> {
     //paging
     @Query("SELECT * FROM Product")
     DataSource.Factory<Integer, Product> findAll();
+
+    @Query("SELECT p.id, p.name, p.image, p.price, c.name As category FROM Product p " +
+            "LEFT JOIN Category c ON p.category_id = c.id")
+    DataSource.Factory<Integer, ProductAndCategoryVO> findProductAndCategory();
 }

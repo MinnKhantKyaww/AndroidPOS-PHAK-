@@ -5,12 +5,9 @@ import androidx.lifecycle.LiveData;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
-import com.example.andoridpos.model.dao.CategoryDao;
 import com.example.andoridpos.model.dao.ProductDao;
-import com.example.andoridpos.model.entity.Category;
 import com.example.andoridpos.model.entity.Product;
-
-import java.util.List;
+import com.example.andoridpos.model.vo.ProductAndCategoryVO;
 
 public class ProductRepo extends CudRepo<Product> {
 
@@ -37,5 +34,7 @@ public class ProductRepo extends CudRepo<Product> {
         return new LivePagedListBuilder<>(dao.findAll(), 25).build();
     }
 
-
+    public LiveData<PagedList<ProductAndCategoryVO>> getProductAndCategory() {
+        return new LivePagedListBuilder<>(dao.findProductAndCategory(), 25).build();
+    }
 }

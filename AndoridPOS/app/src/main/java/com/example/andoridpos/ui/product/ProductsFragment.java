@@ -8,14 +8,42 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.andoridpos.R;
+import com.example.andoridpos.ui.ListFragment;
+import com.example.andoridpos.ui.category.CategorieEditFragment;
+import com.example.andoridpos.ui.category.CategoriesViewMode;
+import com.example.andoridpos.ui.category.CategoryAndProductAdapter;
 
-public class ProductsFragment extends Fragment {
+public class ProductsFragment extends ListFragment {
 
-    @Nullable
+    private ProductAndCategoryAdapter adapter;
+    private ProductsViewModel viewModel;
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_list_item, container, false);
+    protected RecyclerView.Adapter<? extends RecyclerView.ViewHolder> adapter() {
+        if(adapter == null) {
+            adapter = new ProductAndCategoryAdapter();
+
+        }
+        return adapter;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel = ViewModelProviders.of(this).get(ProductsViewModel.class);
+        viewModel.getProducts().observe(this, list -> {
+            adapter.submitList(list);
+        });
+    }
+
+    @Override
+    protected void onFabClick(View view) {
+
+        Navigation.findNavController(view).navigate(R.id.action_productsFragment2_to_productEditFragment);
     }
 }
