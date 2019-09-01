@@ -2,7 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data class="ProductEditViewModel">
+    <data class="ProductEditBinding">
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.example.andoridpos.ui.product.ProductsEditViewModel" />
@@ -24,15 +25,14 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:hint="@string/product_name"
-                android:paddingEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:text="@{viewModel.product.name}"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="@={viewModel.product.name}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -41,7 +41,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="@string/price"
-                android:paddingStart="8dp"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -49,8 +48,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.product.price}"
-                    android:inputType="numberDecimal" />
+                    android:inputType="numberDecimal"
+                    android:text="@={viewModel.product.price}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +74,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
             <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipGroup"
+                android:id="@+id/chipGroupCategories"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="@+id/textView12"
@@ -209,9 +208,9 @@
                 android:layout_marginTop="16dp"
                 android:hint="@string/barcode"
                 android:paddingEnd="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/chipGroup"
-                app:layout_constraintStart_toStartOf="@+id/chipGroup"
-                app:layout_constraintTop_toBottomOf="@+id/chipGroup">
+                app:layout_constraintEnd_toEndOf="@+id/chipGroupCategories"
+                app:layout_constraintStart_toStartOf="@+id/chipGroupCategories"
+                app:layout_constraintTop_toBottomOf="@+id/chipGroupCategories">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -251,6 +250,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+                android:visibility="@{viewModel.product.id > 0 ? View.VISIBLE : View.GONE}"
                 android:text="@string/delete"
                 android:backgroundTint="#DF0002"
                 app:layout_constraintBottom_toBottomOf="parent"

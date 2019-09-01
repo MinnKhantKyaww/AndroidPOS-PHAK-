@@ -21,9 +21,9 @@ public class ProductsEditViewModel extends AndroidViewModel {
     private ProductRepo repo;
     private CategoryRepo categoryRepo;
     public MutableLiveData<Product> product = new MutableLiveData<>();
-    public final MutableLiveData<Category> category = new MutableLiveData<>();
 
-    private LiveData<List<Category>> categories;
+    final MutableLiveData<List<Category>> categories = new MutableLiveData<>();
+    final MutableLiveData<Boolean> operation = new MutableLiveData<>();
 
     public ProductsEditViewModel(@NonNull Application application) {
         super(application);
@@ -31,30 +31,34 @@ public class ProductsEditViewModel extends AndroidViewModel {
         this.categoryRepo = ServiceLocator.getInstance(application).categoryRepo();
     }
 
-    public void init(int id) {
+    void init(int id) {
         AppExecutors.io().execute(() -> {
             Product p = repo.getProductSync(id);
-            if(p == null) {
+            if(p != null) {
                 product.postValue(p);
             } else {
                 product.postValue(new Product());
             }
-        });
-    }
-    public LiveData<List<Category>> getCategories() {
-        if (categories == null) {
-            categories = categoryRepo.getAll();
-        }
 
-        return categories;
+            categories.postValue(categoryRepo.getAllSync());
+        });
     }
 
     public void save() {
-        //TODO
+        if (isValid()) {
+            AppExecutors.io().execute(() -> {
+                try {
+                    repo.save(product.getValue());
+                    operation.postValue(true);
+                } catch (Exception e) {
+                    operation.postValue(false);
+                }
+            });
+        }
     }
 
     public boolean isValid() {
         //TODO
-        return false;
+        return true;
     }
 }

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.andoridpos.BR;
 import com.example.andoridpos.R;
 import com.example.andoridpos.model.vo.ProductAndCategoryVO;
+import com.example.andoridpos.ui.AdapterItemClickListener;
 
 public class ProductAndCategoryAdapter extends PagedListAdapter<ProductAndCategoryVO, ProductAndCategoryAdapter.ProductAndCategoryViewHolder> {
 
@@ -35,6 +36,8 @@ public class ProductAndCategoryAdapter extends PagedListAdapter<ProductAndCatego
         super(DIFF_UTIL);
     }
 
+    private AdapterItemClickListener<ProductAndCategoryVO> adapterItemClickListener;
+
     @NonNull
     @Override
     public ProductAndCategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,6 +51,14 @@ public class ProductAndCategoryAdapter extends PagedListAdapter<ProductAndCatego
         holder.bind(getItem(position));
     }
 
+    public AdapterItemClickListener<ProductAndCategoryVO> getAdapterItemClickListener() {
+        return adapterItemClickListener;
+    }
+
+    public void setAdapterItemClickListener(AdapterItemClickListener<ProductAndCategoryVO> adapterItemClickListener) {
+        this.adapterItemClickListener = adapterItemClickListener;
+    }
+
     class ProductAndCategoryViewHolder extends RecyclerView.ViewHolder {
 
         private ViewDataBinding viewDataBinding;
@@ -55,6 +66,11 @@ public class ProductAndCategoryAdapter extends PagedListAdapter<ProductAndCatego
         ProductAndCategoryViewHolder(ViewDataBinding viewDataBinding) {
             super(viewDataBinding.getRoot());
             this.viewDataBinding = viewDataBinding;
+            viewDataBinding.getRoot().setOnClickListener(v -> {
+                if(adapterItemClickListener != null) {
+                    adapterItemClickListener.onClick(getItem(getAdapterPosition()));
+                }
+            });
         }
 
         void bind(ProductAndCategoryVO obj) {

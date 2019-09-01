@@ -15,6 +15,9 @@ public interface CategoryDao extends CudDao<Category> {
     @Query("SELECT * FROM Category")
     LiveData<List<Category>> findAll();
 
+    @Query("SELECT * FROM Category")
+    List<Category> findAllSync();
+
     @Query("SELECT * FROM Category WHERE id = :id LIMIT 1")
     LiveData<Category> findById(int id);
 

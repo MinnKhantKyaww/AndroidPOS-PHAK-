@@ -20,8 +20,11 @@ public class BindingUtil {
 
     @BindingAdapter("android:text")
     public static void setNumber(EditText editText, double value) {
+        if(value > 0)
         editText.setText(String.valueOf(value));
     }
+
+
 
     @InverseBindingAdapter(attribute = "android:text")
     public static double getNumber(EditText editText) {

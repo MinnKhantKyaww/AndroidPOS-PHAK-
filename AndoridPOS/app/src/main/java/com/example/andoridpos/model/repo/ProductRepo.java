@@ -37,4 +37,12 @@ public class ProductRepo extends CudRepo<Product> {
     public LiveData<PagedList<ProductAndCategoryVO>> getProductAndCategory() {
         return new LivePagedListBuilder<>(dao.findProductAndCategory(), 25).build();
     }
+
+    public void save(Product product) {
+        if (product.getId() > 0) {
+            super.update(product);
+        } else {
+            super.insert(product);
+        }
+    }
 }

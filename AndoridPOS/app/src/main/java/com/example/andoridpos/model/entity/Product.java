@@ -3,6 +3,7 @@ package com.example.andoridpos.model.entity;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = @ForeignKey(entity = Category.class,
@@ -79,4 +80,5 @@ public class Product {
     public void setBarcode(String barcode) {
         this.barcode = barcode;
     }
+
 }

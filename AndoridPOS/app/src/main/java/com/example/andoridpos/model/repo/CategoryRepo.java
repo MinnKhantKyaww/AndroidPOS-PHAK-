@@ -29,6 +29,11 @@ public class CategoryRepo extends CudRepo<Category> {
         return dao.findAll();
     }
 
+    public List<Category> getAllSync() {
+
+        return dao.findAllSync();
+    }
+
     @WorkerThread
     public Category getCategorySync(int id) {
 

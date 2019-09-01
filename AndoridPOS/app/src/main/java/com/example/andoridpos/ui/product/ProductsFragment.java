@@ -27,7 +27,12 @@ public class ProductsFragment extends ListFragment {
     protected RecyclerView.Adapter<? extends RecyclerView.ViewHolder> adapter() {
         if(adapter == null) {
             adapter = new ProductAndCategoryAdapter();
-
+            adapter.setAdapterItemClickListener(vo -> {
+                if (getView() == null) return;
+                Bundle args = new Bundle();
+                args.putInt(ProductEditFragment.KEY_PRODUCT_ID, vo.getId());
+                Navigation.findNavController(getView()).navigate(R.id.action_productsFragment2_to_productEditFragment, args);
+            });
         }
         return adapter;
     }
