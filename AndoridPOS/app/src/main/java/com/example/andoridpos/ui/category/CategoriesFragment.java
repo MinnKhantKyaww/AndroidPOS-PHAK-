@@ -7,15 +7,18 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.andoridpos.R;
 import com.example.andoridpos.ui.ListFragment;
+import com.example.andoridpos.ui.SwipeDeleteGestureCallback;
 
 public class CategoriesFragment extends ListFragment {
 
@@ -33,6 +36,16 @@ public class CategoriesFragment extends ListFragment {
             });
         }
         return adapter;
+    }
+
+    @Override
+    protected boolean listenSwipeDelete() {
+        return true;
+    }
+
+    @Override
+    protected void deleteItemAt(int position) {
+        viewModel.delete(adapter.getItemAt(position).getCategory().getId());
     }
 
     @Override

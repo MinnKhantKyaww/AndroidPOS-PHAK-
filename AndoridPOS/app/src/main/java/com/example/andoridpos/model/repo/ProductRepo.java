@@ -45,4 +45,8 @@ public class ProductRepo extends CudRepo<Product> {
             super.insert(product);
         }
     }
+
+    public void deleteById(int id) {
+        super.delete(dao.findByIdSync(id));
+    }
 }

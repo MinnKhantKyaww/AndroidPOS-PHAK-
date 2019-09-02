@@ -44,6 +44,10 @@ public class CategoryAndProductAdapter extends ListAdapter<CategoryAndProductCou
         return new CategoryAndProductAdapterViewHolder(viewDataBinding);
     }
 
+    public CategoryAndProductCountVO getItemAt(int position) {
+        return getItem(position);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull CategoryAndProductAdapterViewHolder holder, int position) {
         holder.bind(getItem(position));

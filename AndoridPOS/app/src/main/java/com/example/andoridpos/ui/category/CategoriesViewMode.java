@@ -10,6 +10,7 @@ import com.example.andoridpos.ServiceLocator;
 import com.example.andoridpos.model.entity.Category;
 import com.example.andoridpos.model.repo.CategoryRepo;
 import com.example.andoridpos.model.vo.CategoryAndProductCountVO;
+import com.example.andoridpos.util.AppExecutors;
 
 import java.util.List;
 
@@ -24,11 +25,21 @@ public class CategoriesViewMode extends AndroidViewModel {
         this.repo = ServiceLocator.getInstance(application).categoryRepo();
     }
 
-    public LiveData<List<CategoryAndProductCountVO>> getCategories() {
+    LiveData<List<CategoryAndProductCountVO>> getCategories() {
         if (categories == null) {
             categories = repo.getCategoryAndProductCount();
         }
 
         return categories;
+    }
+
+    void delete(int id) {
+        AppExecutors.io().execute(() -> {
+            try {
+                repo.deleteById(id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

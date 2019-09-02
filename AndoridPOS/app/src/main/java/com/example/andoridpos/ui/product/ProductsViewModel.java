@@ -11,6 +11,7 @@ import com.example.andoridpos.ServiceLocator;
 import com.example.andoridpos.model.entity.Product;
 import com.example.andoridpos.model.repo.ProductRepo;
 import com.example.andoridpos.model.vo.ProductAndCategoryVO;
+import com.example.andoridpos.util.AppExecutors;
 
 public class ProductsViewModel extends AndroidViewModel {
 
@@ -23,12 +24,22 @@ public class ProductsViewModel extends AndroidViewModel {
         this.repo = ServiceLocator.getInstance(application).productRepo();
     }
 
-    public LiveData<PagedList<ProductAndCategoryVO>> getProducts() {
+    LiveData<PagedList<ProductAndCategoryVO>> getProducts() {
 
         if(products == null) {
             products = repo.getProductAndCategory();
         }
 
         return products;
+    }
+
+    void delete(int id) {
+        try {
+            AppExecutors.io().execute(() -> {
+                repo.deleteById(id);
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

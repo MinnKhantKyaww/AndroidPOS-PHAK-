@@ -46,6 +46,10 @@ public class ProductAndCategoryAdapter extends PagedListAdapter<ProductAndCatego
         return new ProductAndCategoryViewHolder(viewDataBinding);
     }
 
+    public ProductAndCategoryVO getItemAt(int position) {
+        return getItem(position);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ProductAndCategoryViewHolder holder, int position) {
         holder.bind(getItem(position));

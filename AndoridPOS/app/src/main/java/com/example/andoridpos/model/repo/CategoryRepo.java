@@ -53,4 +53,9 @@ public class CategoryRepo extends CudRepo<Category> {
         }
 
     }
+
+    public void deleteById(int id) {
+        super.delete(dao.findBySync(id));
+
+    }
 }

@@ -38,6 +38,16 @@ public class ProductsFragment extends ListFragment {
     }
 
     @Override
+    protected boolean listenSwipeDelete() {
+        return true;
+    }
+
+    @Override
+    protected void deleteItemAt(int position) {
+        viewModel.delete(adapter.getItemAt(position).getId());
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this).get(ProductsViewModel.class);
