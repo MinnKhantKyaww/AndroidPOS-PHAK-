@@ -32,8 +32,12 @@ public class ProductEditFragment extends Fragment {
     private final ChipGroup.OnCheckedChangeListener chipCheckListener = (chipGroup, id) -> {
         if(getView() == null) return;
         Chip chip = getView().findViewById(id);
-
         Product product = viewModel.product.getValue();
+
+        if(chip == null) {
+            product.setCategoryId(0);
+            return;
+        }
         product.setCategoryId((Integer) chip.getTag());
     };
 
