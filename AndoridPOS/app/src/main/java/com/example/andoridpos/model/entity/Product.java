@@ -1,16 +1,20 @@
 package com.example.andoridpos.model.entity;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.example.andoridpos.BR;
+
 @Entity(foreignKeys = @ForeignKey(entity = Category.class,
         parentColumns = "id",
         childColumns = "category_id"
 ))
-public class Product {
+public class Product extends BaseObservable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -73,12 +77,14 @@ public class Product {
         this.available = available;
     }
 
+    @Bindable
     public String getBarcode() {
         return barcode;
     }
 
     public void setBarcode(String barcode) {
         this.barcode = barcode;
+        notifyPropertyChanged(com.example.andoridpos.BR.barcode);
     }
 
 }

@@ -21,6 +21,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             app:srcCompat="@mipmap/ic_launcher"
+            android:scaleType="fitXY"
+            app:path="@{obj.image}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

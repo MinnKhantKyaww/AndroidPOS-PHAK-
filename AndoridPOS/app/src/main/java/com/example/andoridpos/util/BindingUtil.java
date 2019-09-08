@@ -1,6 +1,8 @@
 package com.example.andoridpos.util;
 
+import android.net.Uri;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
@@ -30,5 +32,12 @@ public class BindingUtil {
     public static double getNumber(EditText editText) {
         String value = editText.getText().toString();
         return value.isEmpty() ? 0.0 : Double.parseDouble(value);
+    }
+
+    @BindingAdapter("path")
+    public static void setImageUri(ImageView imageView, String imageFilePath) {
+        if(imageFilePath != null && !imageFilePath.isEmpty()) {
+            imageView.setImageURI(Uri.parse(imageFilePath));
+        }
     }
 }
