@@ -157,11 +157,10 @@ public class ProductEditFragment extends Fragment {
           intentIntegrator.initiateScan();
         });
 
-        btnTakePhoto.setOnClickListener(v -> {
+        /*btnTakePhoto.setOnClickListener(v -> {
 
             BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
             View bottomsheetView = getLayoutInflater().inflate(R.layout.layout_take_picture_action, null);
-
             TextView tvTakePhoto = bottomsheetView.findViewById(R.id.tvTakePhoto);
             //TextView tvChooseGallery = bottomsheetView.findViewById(R.id.tvChooseGallery);
 
@@ -172,7 +171,7 @@ public class ProductEditFragment extends Fragment {
 
             dialog.setContentView(bottomsheetView);
             dialog.show();
-        });
+        });*/
     }
 
     @Override
