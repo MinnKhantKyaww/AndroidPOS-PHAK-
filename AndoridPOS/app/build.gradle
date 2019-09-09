@@ -69,5 +69,6 @@ dependencies {
 
     //Barcode
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
 
 }

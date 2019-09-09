@@ -14,18 +14,30 @@
 
     </Transition>
 
+    <Transition
+        app:constraintSetStart="@id/sheet_end_hide"
+        app:constraintSetEnd="@id/sheet_start_hide"
+        app:motionInterpolator="easeInOut"
+        app:duration="1500">
+
+        <OnSwipe
+            app:dragDirection="dragDown"
+            app:onTouchUp="autoComplete"
+            app:touchAnchorSide="bottom"
+            app:touchAnchorId="@id/bottom"/>
+
+    </Transition>
+
     <ConstraintSet android:id="@+id/sheet_start_hide">
 
         <Constraint
-            android:id="@+id/bottomsheet"
-            android:layout_width="0dp"
+            android:id="@+id/bottom"
+            android:layout_width="410dp"
             android:layout_height="106dp"
-            android:layout_marginTop="8dp"
-            android:elevation="15dp"
-            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline"/>
+            app:layout_constraintTop_toBottomOf="parent"/>
 
         <Constraint android:id="@+id/btnTakePhoto"
         android:layout_width="120dp"
@@ -35,22 +47,30 @@
         app:layout_constraintStart_toStartOf="@+id/checkBox"
         app:layout_constraintTop_toBottomOf="@+id/checkBox"/>
 
+        <Constraint
+            android:id="@+id/bottom_arrow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvTakePhoto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.472"
+            app:layout_constraintStart_toStartOf="parent"/>
+
     </ConstraintSet>
 
 
     <ConstraintSet android:id="@+id/sheet_end_hide">
 
         <Constraint
-            android:id="@+id/bottomsheet"
+            android:id="@+id/bottom"
             android:layout_width="0dp"
             android:layout_height="106dp"
-            android:layout_marginTop="8dp"
-            android:elevation="15dp"
-            android:orientation="vertical"
-            android:layout_marginBottom="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"/>
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <Constraint android:id="@+id/btnTakePhoto"
             android:layout_width="120dp"
@@ -59,6 +79,22 @@
             app:layout_constraintEnd_toEndOf="@+id/checkBox"
             app:layout_constraintStart_toStartOf="@+id/checkBox"
             app:layout_constraintTop_toBottomOf="@+id/checkBox"/>
+
+        <Constraint
+            android:id="@+id/bottom_arrow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvTakePhoto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.472"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Transform
+                android:rotation="180"/>
+
+        </Constraint>
 
     </ConstraintSet>
 

@@ -1,40 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motion_bottom_sheet"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="170dp"
+    android:layout_alignBottom="@+id/btnTakePhoto"
+    android:background="@drawable/bottom_sheet_round_corner"
+    android:elevation="15dp"
     android:orientation="vertical"
-    style="@style/AppTheme"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    app:layout_constraintCircleRadius="@dimen/bottom_sheet_radius">
+    app:layoutDescription="@xml/motion_scene_arrow">
 
-        <TextView
-            android:id="@+id/tvTakePhoto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_camera_alt_dark"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackground"
-            android:drawablePadding="16dp"
-            android:padding="15dp"
-            android:text="Take Photo" />
+    <ImageView
+        android:id="@+id/bottom_arrow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvTakePhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_arrow_drop_up_dark" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="0.7dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:background="#858484" />
+    <TextView
+        android:id="@+id/tvTakePhoto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:drawableStart="@drawable/ic_camera_alt_dark"
+        android:drawablePadding="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        android:text="Take Photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_arrow" />
 
     <TextView
         android:id="@+id/tvChooseGallery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:background="?attr/selectableItemBackground"
         android:drawableStart="@drawable/ic_photo_library_dark"
         android:drawablePadding="16dp"
-        android:padding="16dp"
-        android:text="Choose from gallery" />
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        android:text="Choose from gallery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
-</LinearLayout>
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#858484"
+        app:layout_constraintBottom_toTopOf="@+id/tvChooseGallery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTakePhoto" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

@@ -19,8 +19,8 @@
             android:layout_height="match_parent">
 
             <androidx.constraintlayout.motion.widget.MotionLayout
-                android:layout_width="412dp"
-                android:layout_height="726dp"
+                android:layout_width="0dp"
+                android:layout_height="603dp"
                 app:layoutDescription="@xml/motionscene_bottom_sheet"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -39,14 +39,7 @@
                     app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
                     app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_end="148dp" />
-
-                <LinearLayout
+                <!--<LinearLayout
                     android:id="@+id/bottomsheet"
                     android:layout_width="0dp"
                     android:layout_height="170dp"
@@ -86,7 +79,7 @@
                         android:layout_marginEnd="15dp"
                         android:background="#858484" />
 
-                </LinearLayout>
+                </LinearLayout>-->
 
                 <TextView
                     android:id="@+id/textView12"
@@ -144,6 +137,13 @@
                     app:layout_constraintStart_toStartOf="@+id/checkBox"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_end="148dp" />
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button2"
                     android:layout_width="0dp"
@@ -158,6 +158,19 @@
                     app:layout_constraintStart_toStartOf="@+id/divider2"
                     app:layout_constraintTop_toBottomOf="@+id/divider2"
                     app:layout_constraintVertical_bias="0.145" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/bottom"
+                    android:layout_width="410dp"
+                    android:layout_height="106dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent">
+
+                    <include android:id="@+id/picture" layout="@layout/layout_take_picture_action" />
+
+                </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/chipGroupCategories"
