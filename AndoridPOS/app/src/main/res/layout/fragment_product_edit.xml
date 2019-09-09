@@ -14,214 +14,221 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.motion.widget.MotionLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutDescription="@xml/motionscene_bottom_sheet"
-            app:showPaths="true">
+            android:layout_height="match_parent">
 
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:checked="@={viewModel.product.available}"
-                android:text="@string/available"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/categories"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
-
-            <View
-                android:id="@+id/divider"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintEnd_toEndOf="@+id/textView12"
-                app:layout_constraintStart_toStartOf="@+id/textView12"
-                app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-            <View
-                android:id="@+id/divider2"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintEnd_toEndOf="@+id/checkBox"
-                app:layout_constraintStart_toStartOf="@+id/checkBox"
-                app:layout_constraintTop_toBottomOf="@+id/btnTakePhoto" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btnScan"
-                android:layout_width="48dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="4dp"
-                android:layout_weight="1"
-                android:background="?android:attr/selectableItemBackground"
-                android:src="@drawable/ic_qr_code"
-                app:layout_constraintBottom_toBottomOf="@+id/textInputLayout3"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
-                app:layout_constraintTop_toTopOf="@+id/textInputLayout3" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btnTakePhoto"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginTop="16dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/ic_add_a_photo_black_24dp"
-                app:layout_constraintEnd_toEndOf="@+id/checkBox"
-                app:layout_constraintStart_toStartOf="@+id/checkBox"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="#DF0002"
-                android:text="@string/delete"
-                android:visibility="@{viewModel.product.id > 0 ? View.VISIBLE : View.GONE}"
+            <androidx.constraintlayout.motion.widget.MotionLayout
+                android:layout_width="412dp"
+                android:layout_height="726dp"
+                app:layoutDescription="@xml/motionscene_bottom_sheet"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/divider2"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/divider2"
-                app:layout_constraintTop_toBottomOf="@+id/divider2"
-                app:layout_constraintVertical_bias="0.145" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_end="16dp" />
-
-            <LinearLayout
-                android:id="@+id/bottomsheet"
-                style="@style/AppTheme"
-                android:layout_width="0dp"
-                android:layout_height="106dp"
-                android:layout_marginTop="8dp"
-                android:elevation="15dp"
-                android:orientation="vertical"
-                app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline">
+                app:layout_constraintTop_toTopOf="parent"
+                app:showPaths="true">
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:checked="@={viewModel.product.available}"
+                    android:text="@string/available"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_end="148dp" />
+
+                <LinearLayout
+                    android:id="@+id/bottomsheet"
+                    android:layout_width="0dp"
+                    android:layout_height="170dp"
+                    android:background="@drawable/bottom_sheet_round_corner"
+                    android:elevation="15dp"
+                    android:orientation="vertical"
+                    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent">
+
+                    <TextView
+                        android:id="@+id/tvTakePhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:drawableStart="@drawable/ic_camera_alt_dark"
+                        android:drawablePadding="16dp"
+                        android:padding="15dp"
+                        android:text="Take Photo" />
+
+                    <TextView
+                        android:id="@+id/tvChooseGallery"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:drawableStart="@drawable/ic_photo_library_dark"
+                        android:drawablePadding="16dp"
+                        android:padding="15dp"
+                        android:text="Choose from gallery" />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.7dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:background="#858484" />
+
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/tvTakePhoto"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textView12"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="?attr/selectableItemBackground"
-                    android:drawableStart="@drawable/ic_camera_alt_dark"
-                    android:drawablePadding="16dp"
-                    android:padding="15dp"
-                    android:text="Take Photo" />
-
-                <TextView
-                    android:id="@+id/tvChooseGallery"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:drawableStart="@drawable/ic_photo_library_dark"
-                    android:drawablePadding="16dp"
-                    android:padding="16dp"
-                    android:text="Choose from gallery" />
+                    android:layout_marginTop="16dp"
+                    android:text="@string/categories"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
                 <View
-                    android:id="@+id/view"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.7dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:background="#858484" />
+                    android:id="@+id/divider"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="@+id/textView12"
+                    app:layout_constraintStart_toStartOf="@+id/textView12"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-            </LinearLayout>
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="@+id/checkBox"
+                    app:layout_constraintStart_toStartOf="@+id/checkBox"
+                    app:layout_constraintTop_toBottomOf="@+id/btnTakePhoto" />
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipGroupCategories"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                app:itemSpacing="5dp"
-                app:layout_constraintEnd_toEndOf="@+id/textView12"
-                app:layout_constraintStart_toStartOf="@+id/textView12"
-                app:layout_constraintTop_toBottomOf="@+id/divider"
-                app:singleSelection="true">
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btnScan"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:src="@drawable/ic_qr_code"
+                    app:layout_constraintBottom_toBottomOf="@+id/textInputLayout3"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
+                    app:layout_constraintTop_toTopOf="@+id/textInputLayout3" />
 
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btnTakePhoto"
+                    android:layout_width="182dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="16dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_add_a_photo_black_24dp"
+                    app:layout_constraintEnd_toEndOf="@+id/checkBox"
+                    app:layout_constraintHorizontal_bias="0.359"
+                    app:layout_constraintStart_toStartOf="@+id/checkBox"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
-            </com.google.android.material.chip.ChipGroup>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:hint="@string/product_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@={viewModel.product.name}" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="#DF0002"
+                    android:text="@string/delete"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2"
+                    app:layout_constraintVertical_bias="0.145" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="@string/price"
-                app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupCategories"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:text="@={viewModel.product.price}" />
+                    android:padding="8dp"
+                    app:itemSpacing="5dp"
+                    app:layout_constraintEnd_toEndOf="@+id/textView12"
+                    app:layout_constraintStart_toStartOf="@+id/textView12"
+                    app:layout_constraintTop_toBottomOf="@+id/divider"
+                    app:singleSelection="true">
 
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="@string/barcode"
-                android:paddingEnd="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/chipGroupCategories"
-                app:layout_constraintStart_toStartOf="@+id/chipGroupCategories"
-                app:layout_constraintTop_toBottomOf="@+id/chipGroupCategories">
+                </com.google.android.material.chip.ChipGroup>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:lines="1"
-                    android:text="@={viewModel.product.barcode}" />
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/product_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={viewModel.product.name}" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        </androidx.constraintlayout.motion.widget.MotionLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/price"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:text="@={viewModel.product.price}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/barcode"
+                    android:paddingEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="@+id/chipGroupCategories"
+                    app:layout_constraintStart_toStartOf="@+id/chipGroupCategories"
+                    app:layout_constraintTop_toBottomOf="@+id/chipGroupCategories">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:text="@={viewModel.product.barcode}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.motion.widget.MotionLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
