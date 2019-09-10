@@ -80,8 +80,8 @@ public class ProductEditFragment extends Fragment {
         setHasOptionsMenu(true);
 
         MainActivity mainActivity = (MainActivity) requireActivity();
-        mainActivity.switchToggle(false);
-        mainActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+ //       mainActivity.switchToggle(false);
+//        mainActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewModel = ViewModelProviders.of(this).get(ProductsEditViewModel.class);
 
@@ -222,7 +222,7 @@ public class ProductEditFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         MainActivity mainActivity = (MainActivity) requireActivity();
-        mainActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+     //   mainActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         mainActivity.switchToggle(true);
         mainActivity.hideKeyboard();
     }

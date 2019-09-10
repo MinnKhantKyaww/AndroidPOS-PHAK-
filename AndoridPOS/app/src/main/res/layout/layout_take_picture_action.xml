@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/motion_bottom_sheet"
@@ -8,9 +8,8 @@
     android:layout_alignBottom="@+id/btnTakePhoto"
     android:background="@drawable/bottom_sheet_round_corner"
     android:elevation="15dp"
-    android:orientation="vertical"
-    app:layoutDescription="@xml/motion_scene_arrow">
-
+    android:orientation="vertical">
+<!--
     <ImageView
         android:id="@+id/bottom_arrow"
         android:layout_width="0dp"
@@ -21,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_arrow_drop_up_dark" />
+        app:srcCompat="@drawable/ic_arrow_drop_up_dark" />-->
 
     <TextView
         android:id="@+id/tvTakePhoto"
@@ -71,4 +70,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTakePhoto" />
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

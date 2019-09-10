@@ -30,25 +30,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);
+       /* Toolbar toolbar = findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);*/
 
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+/*        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout = findViewById(R.id.drawer_layout);
 
          toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawerLayout, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
         toggle.setToolbarNavigationClickListener(v -> {
             Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp();
-        });
+        });*/
 
-        NavigationView navigationView = findViewById(R.id.navigation_view);
+        /*NavigationView navigationView = findViewById(R.id.navigation_view);
 
 
-        NavigationUI.setupWithNavController(navigationView, Navigation.findNavController(this, R.id.my_nav_host_fragment));
+        NavigationUI.setupWithNavController(navigationView, Navigation.findNavController(this, R.id.my_nav_host_fragment));*/
     }
 
     @Override
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void switchToggle(boolean enable) {
-        toggle.setDrawerIndicatorEnabled(enable);
+     //   toggle.setDrawerIndicatorEnabled(enable);
     }
 
     public void hideKeyboard() {

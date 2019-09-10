@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetStart="@layout/activity_main"
+        app:constraintSetEnd="@layout/activity_main_illustaion"
+        app:motionInterpolator="linear"
+        app:duration="1200">
+
+        <OnSwipe
+            app:touchAnchorId="@+id/toggle_img"
+            app:touchRegionId="@+id/toggle_img"
+            app:dragDirection="dragRight"
+            app:touchAnchorSide="right"
+            app:onTouchUp="autoComplete"/>
+
+    </Transition>
+
+</MotionScene>
