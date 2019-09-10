@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawer_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.MainActivity"
+    android:background="#292828"
     app:layoutDescription="@xml/motion_scene_nav"
-    app:showPaths="true">
+    app:showPaths="true"
+    tools:context=".ui.MainActivity">
 
     <!--<androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/content"
@@ -46,19 +47,11 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.19" />
 
-    <include
-        android:id="@+id/left_nav"
-        layout="@layout/layout_side_navigation"
-        android:layout_width="195dp"
-        android:layout_height="750dp"
-        app:layout_constraintEnd_toStartOf="parent"
-        tools:layout_editor_absoluteY="40dp" />
-
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialcard1"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +59,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="400dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <fragment
@@ -98,6 +91,16 @@
 
 
     </com.google.android.material.card.MaterialCardView>
+
+
+    <include
+        android:id="@+id/left_nav"
+        layout="@layout/layout_side_navigation"
+        android:layout_width="195dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--<com.google.android.material.card.MaterialCardView
         android:id="@+id/materialcard1"
@@ -143,7 +146,6 @@
 
 
     <!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->
-
 
 
     <!--<com.google.android.material.navigation.NavigationView

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="250dp"
     android:layout_height="match_parent"
-    android:background="#E6E4E4"
-    android:elevation="15dp"
+    android:background="#292828"
+    android:elevation="1sp"
     android:orientation="vertical">
 
 
@@ -27,6 +27,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:text="AndroidPOS"
+        android:textColor="#FFFFFF"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +41,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:text="Sale"
+        android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/view2"
@@ -51,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Product"
+        android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/textView16"
         app:layout_constraintStart_toStartOf="@+id/textView16"
@@ -62,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Categories"
+        android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/textView17"
         app:layout_constraintHorizontal_bias="0.0"
@@ -75,7 +79,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:background="#979797"
+        android:background="#E0E0E0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
