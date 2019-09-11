@@ -51,22 +51,26 @@
         android:id="@+id/materialcard1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:cardBackgroundColor="#FFFFFF">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/linearlayout1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/appbar"
+                layout="@layout/layout_app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="361dp" />
 
             <fragment
                 android:id="@+id/my_nav_host_fragment"
                 android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 app:defaultNavHost="true"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -75,32 +79,18 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/appbar"
                 app:layout_constraintTop_toBottomOf="@+id/appbar"
-                app:layout_constraintVertical_bias="0.0"
                 app:navGraph="@navigation/nav_graph" />
 
-            <include
-                android:id="@+id/appbar"
-                layout="@layout/layout_app_bar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
-
 
     <include
         android:id="@+id/left_nav"
         layout="@layout/layout_side_navigation"
         android:layout_width="195dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="0dp" />
 
     <!--<com.google.android.material.card.MaterialCardView
         android:id="@+id/materialcard1"
