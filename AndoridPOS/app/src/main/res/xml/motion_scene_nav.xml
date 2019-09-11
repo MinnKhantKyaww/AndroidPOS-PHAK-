@@ -4,20 +4,452 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <Transition
-        app:constraintSetEnd="@id/start_nav"
-        app:constraintSetStart="@id/default_view"
-        app:duration="1500"
-        app:motionInterpolator="easeInOut">
+    <ConstraintSet android:id="@+id/default_view">
 
-        <OnSwipe
-            app:dragDirection="dragRight"
-            app:onTouchUp="autoComplete"
-            app:touchAnchorId="@id/materialcard1"
-            app:touchAnchorSide="right"
-            app:touchRegionId="@id/materialcard1"/>
+        <Constraint
+            android:id="@+id/categories_edit"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.51">
 
-    </Transition>
+            <CustomAttribute
+                app:attributeName="visibility"
+                app:customIntegerValue="2" />
+
+            <CustomAttribute
+                app:attributeName="alpha"
+                app:customFloatValue="0" />
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/materialcard1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/linearlayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CustomAttribute
+                app:attributeName="orientation"
+                app:customIntegerValue="1" />
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/appbar"
+            layout="@layout/layout_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="361dp" />
+
+        <Constraint
+            android:id="@+id/toggle_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView19"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView19"/>
+
+        <Constraint
+            android:id="@+id/textView19"
+            android:layout_width="349dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/toggle_img"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <Constraint
+            android:id="@+id/add_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <PropertySet
+                android:visibility="gone"
+                android:alpha="0"/>
+
+        </Constraint>
+
+
+        <Constraint
+            android:id="@+id/my_nav_host_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintCircleRadius="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/appbar"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/appbar"
+            app:layout_constraintTop_toBottomOf="@+id/appbar" />
+
+        <Constraint
+            android:id="@+id/list_categories"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CustomAttribute
+                app:attributeName="visibility"
+                app:customIntegerValue="2" />
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/left_nav"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/start_nav"
+        app:deriveConstraintsFrom="@id/default_view">
+
+        <Constraint
+            android:id="@+id/materialcard1"
+            android:layout_width="393dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/guideline3">
+
+            <CustomAttribute
+                app:attributeName="elevation"
+                app:customDimension="10dp" />
+
+            <!--<CustomAttribute
+                app:attributeName="cardCornerRadius"
+                app:customDimension="15dp"/>-->
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/linearlayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CustomAttribute
+                app:attributeName="orientation"
+                app:customIntegerValue="1" />
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/my_nav_host_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/appbar"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/appbar"
+            app:layout_constraintTop_toBottomOf="@+id/appbar" />
+
+        <Constraint
+            android:id="@+id/left_nav"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/side_sale"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/view2"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <Constraint
+            android:id="@+id/side_product"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Product"
+            app:layout_constraintEnd_toEndOf="@+id/side_sale"
+            app:layout_constraintStart_toStartOf="@+id/side_sale"
+            app:layout_constraintTop_toBottomOf="@+id/side_sale" />
+
+        <Constraint
+            android:id="@+id/side_categories"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="@+id/side_product"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/side_product"
+            app:layout_constraintTop_toBottomOf="@+id/side_product" />
+
+        <Constraint
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/side_title" />
+
+    </ConstraintSet>
+
+    <ConstraintSet
+        android:id="@+id/categories_list"
+        app:deriveConstraintsFrom="@id/start_nav">
+
+        <Constraint
+            android:id="@+id/categories_edit"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.51">
+
+            <CustomAttribute
+                app:attributeName="visibility"
+                app:customIntegerValue="2" />
+
+            <CustomAttribute
+                app:attributeName="alpha"
+                app:customFloatValue="0" />
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/materialcard1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/linearlayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CustomAttribute
+                app:attributeName="orientation"
+                app:customIntegerValue="1" />
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/appbar"
+            layout="@layout/layout_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="361dp" />
+
+        <Constraint
+            android:id="@+id/toggle_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView19"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView19"/>
+
+        <Constraint
+            android:id="@+id/textView19"
+            android:layout_width="349dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/toggle_img"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <Constraint
+            android:id="@+id/add_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <PropertySet
+                android:visibility="visible"
+                android:alpha="1"/>
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/my_nav_host_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintCircleRadius="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/appbar"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/appbar"
+            app:layout_constraintTop_toBottomOf="@+id/appbar">
+
+            <CustomAttribute
+                app:attributeName="visibility"
+                app:customIntegerValue="2" />
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/list_categories"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Constraint
+            android:id="@+id/left_nav"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--<Constraint
+            android:id="@+id/categories_frag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"/>
+
+        <Constraint
+            android:id="@+id/appbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <Constraint
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
+            app:layout_constraintVertical_bias="0.0"/>
+
+        <Constraint
+            android:id="@+id/fab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>-->
+
+    </ConstraintSet>
+
+    <ConstraintSet
+        android:id="@+id/category_edit"
+        app:deriveConstraintsFrom="@id/categories_list">
+
+        <Constraint
+            android:id="@+id/categories_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.51">
+
+            <CustomAttribute
+                app:attributeName="visibility"
+                app:customIntegerValue="0" />
+
+            <CustomAttribute
+                app:attributeName="alpha"
+                app:customFloatValue="1" />
+
+        </Constraint>
+
+        <!--<Constraint
+            android:id="@+id/edit_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <Constraint
+            android:id="@+id/category_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <Constraint
+            android:id="@+id/textInputLayoutCategoryName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/category_title"
+            app:layout_constraintStart_toStartOf="@+id/category_title"
+            app:layout_constraintTop_toBottomOf="@+id/category_title"/>
+
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"/>
+
+        <Constraint
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnSave"
+            app:layout_constraintEnd_toStartOf="@+id/btnSave"/>
+
+        <Constraint
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayoutCategoryName"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCategoryName"/>-->
+
+    </ConstraintSet>
 
     <Transition
         app:constraintSetEnd="@id/start_nav"
@@ -29,47 +461,14 @@
             app:clickAction="toggle"
             app:targetId="@+id/toggle_img" />
 
-    </Transition>
-
-    <Transition
-        app:constraintSetStart="@id/start_nav"
-        app:constraintSetEnd="@id/categories_list"
-        app:duration="1200"
-        app:motionInterpolator="easeInOut">
-
-        <OnClick
-            app:clickAction="toggle"
-            app:targetId="@id/side_categories"/>
-
-    </Transition>
-
-    <Transition
-        app:constraintSetStart="@id/categories_list"
-        app:constraintSetEnd="@id/start_nav"
-        app:duration="1500"
-        app:motionInterpolator="easeInOut">
-
         <OnSwipe
             app:dragDirection="dragRight"
             app:onTouchUp="autoComplete"
             app:touchAnchorId="@id/materialcard1"
             app:touchAnchorSide="right"
-            app:touchRegionId="@id/materialcard1"/>
+            app:touchRegionId="@id/materialcard1" />
 
     </Transition>
-
-    <Transition
-        app:constraintSetStart="@id/categories_list"
-        app:constraintSetEnd="@id/category_edit"
-        app:duration="1500"
-            app:motionInterpolator="easeInOut">
-
-            <OnClick
-                app:targetId="@id/fab2"
-                app:clickAction="toggle"/>
-
-        </Transition>
-
     <!--<Transition
         app:constraintSetEnd="@layout/fragment_list_categories"
         app:constraintSetStart="@layout/activity_main_illustaion"
@@ -160,161 +559,47 @@
 
         </Transition>-->
 
-    <ConstraintSet
-        android:id="@+id/default_view">
+    <Transition
+        app:constraintSetEnd="@id/categories_list"
+        app:constraintSetStart="@id/start_nav"
+        app:duration="1200"
+        app:motionInterpolator="easeInOut">
 
-        <Constraint
-            android:id="@+id/materialcard1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@id/side_categories" />
 
-        <Constraint
-            android:id="@+id/linearlayout1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <KeyFrameSet>
 
-            <CustomAttribute
-                app:attributeName="orientation"
-                app:customIntegerValue="1"/>
+            <KeyAttribute
+                app:transitionEasing="linear"
+                android:visibility="visible"
+                android:alpha="1"
+                app:motionTarget="@id/add_img"/>
 
-        </Constraint>
+        </KeyFrameSet>
 
-        <Constraint
-            android:id="@+id/appbar"
-            layout="@layout/layout_app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="361dp"/>
-
-        <Constraint
-            android:id="@+id/my_nav_host_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintCircleRadius="15dp"
-            app:layout_constraintEnd_toEndOf="@+id/appbar"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/appbar"
-            app:layout_constraintTop_toBottomOf="@+id/appbar"/>
-
-        <Constraint
-            android:id="@+id/left_nav"
-            android:layout_width="200dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-    </ConstraintSet>
+    </Transition>
 
 
-    <ConstraintSet
-        android:id="@+id/start_nav"
-        app:deriveConstraintsFrom="@id/default_view">
+    <Transition
+        app:constraintSetEnd="@id/start_nav"
+        app:constraintSetStart="@id/categories_list"
+        app:duration="1200"
+        app:motionInterpolator="easeInOut">
 
-        <Constraint
-            android:id="@+id/materialcard1"
-            android:layout_width="393dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/guideline3">
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@+id/toggle_img" />
 
-            <CustomAttribute
-                app:attributeName="elevation"
-                app:customDimension="10dp"/>
+        <OnSwipe
+            app:dragDirection="dragRight"
+            app:onTouchUp="autoComplete"
+            app:touchAnchorId="@id/materialcard1"
+            app:touchAnchorSide="right"
+            app:touchRegionId="@id/materialcard1" />
 
-            <!--<CustomAttribute
-                app:attributeName="cardCornerRadius"
-                app:customDimension="15dp"/>-->
-
-        </Constraint>
-
-        <Constraint
-            android:id="@+id/linearlayout1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <CustomAttribute
-                app:attributeName="orientation"
-                app:customIntegerValue="1"/>
-
-        </Constraint>
-
-        <Constraint
-            android:id="@+id/appbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <Constraint
-            android:id="@+id/my_nav_host_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/appbar"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/appbar"
-            app:layout_constraintTop_toBottomOf="@+id/appbar"/>
-
-        <Constraint
-            android:id="@+id/left_nav"
-            android:layout_width="200dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <Constraint
-            android:id="@+id/side_sale"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/view2"
-            app:layout_constraintTop_toBottomOf="@+id/view2"/>
-
-        <Constraint
-            android:id="@+id/side_product"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Product"
-            app:layout_constraintEnd_toEndOf="@+id/side_sale"
-            app:layout_constraintStart_toStartOf="@+id/side_sale"
-            app:layout_constraintTop_toBottomOf="@+id/side_sale"/>
-
-        <Constraint
-            android:id="@+id/side_categories"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="@+id/side_product"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/side_product"
-            app:layout_constraintTop_toBottomOf="@+id/side_product"/>
-
-        <Constraint
-            android:id="@+id/view2"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/side_title"/>
-
-    </ConstraintSet>
+    </Transition>
 
     <!--<ConstraintSet
         android:id="@+id/nav_categories"
@@ -420,100 +705,34 @@
 
     </ConstraintSet>-->
 
-    <ConstraintSet
-        android:id="@+id/categories_list"
-        app:deriveConstraintsFrom="@id/start_nav">
+    <!--<Transition
+        app:constraintSetEnd="@id/start_nav"
+        app:constraintSetStart="@id/categories_list"
+        app:duration="1500"
+        app:motionInterpolator="easeInOut">
 
-        <Constraint
-            android:id="@+id/categories_frag"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"/>
+        <OnSwipe>
 
-        <Constraint
-            android:id="@+id/appbar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+    </Transition>-->
 
-        <Constraint
-            android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appbar"
-            app:layout_constraintVertical_bias="0.0"/>
+    <Transition
+        app:constraintSetEnd="@id/category_edit"
+        app:constraintSetStart="@id/categories_list"
+        app:duration="1500"
+        app:motionInterpolator="easeInOut">
 
-        <Constraint
-            android:id="@+id/fab2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+        <KeyFrameSet>
 
-    </ConstraintSet>
+            <KeyAttribute
+                android:alpha="1"
+                 app:motionTarget="@+id/add_img"/>
 
-    <ConstraintSet
-        android:id="@+id/category_edit"
-        app:deriveConstraintsFrom="@id/categories_list">
+        </KeyFrameSet>
 
-        <Constraint
-            android:id="@+id/edit_category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@id/add_img" />
 
-        <Constraint
-            android:id="@+id/category_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <Constraint
-            android:id="@+id/textInputLayoutCategoryName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/category_title"
-            app:layout_constraintStart_toStartOf="@+id/category_title"
-            app:layout_constraintTop_toBottomOf="@+id/category_title"/>
-
-        <Constraint
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"/>
-
-        <Constraint
-            android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btnSave"
-            app:layout_constraintEnd_toStartOf="@+id/btnSave"/>
-
-        <Constraint
-            android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="Save"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayoutCategoryName"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCategoryName"/>
-
-    </ConstraintSet>
+    </Transition>
 
 </MotionScene>
