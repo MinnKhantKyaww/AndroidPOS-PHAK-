@@ -51,6 +51,7 @@ public class CategoriesFragment extends ListFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         viewModel = ViewModelProviders.of(this).get(CategoriesViewMode.class);
         viewModel.getCategories().observe(this, list -> {
             adapter.submitList(list);

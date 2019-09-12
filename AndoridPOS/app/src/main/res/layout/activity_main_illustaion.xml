@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+    android:id="@+id/nav_side"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#292828"
@@ -93,20 +93,68 @@
         app:layout_constraintTop_toBottomOf="@+id/guideline3">
 
         <LinearLayout
+            android:id="@+id/linearlayout1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/appbar"
-                layout="@layout/layout_app_bar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/toggle_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:alpha="0"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView19"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView19"
+                    app:srcCompat="@drawable/ic_menu_black_24dp"
+                    tools:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/add_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_add" />
+
+                <ImageView
+                    android:id="@+id/arrow_back"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:alpha="1"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/toggle_img"
+                    app:layout_constraintEnd_toEndOf="@+id/toggle_img"
+                    app:layout_constraintStart_toStartOf="@+id/toggle_img"
+                    app:layout_constraintTop_toTopOf="@+id/toggle_img"
+                    app:srcCompat="@drawable/ic_arrow_back_dark" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="349dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="POS"
+                    android:textAlignment="textStart"
+                    android:textColor="#501010"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/toggle_img"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <fragment
                 android:id="@+id/my_nav_host_fragment"
@@ -122,6 +170,13 @@
                 app:layout_constraintStart_toStartOf="@+id/appbar"
                 app:layout_constraintTop_toBottomOf="@+id/appbar"
                 app:navGraph="@navigation/nav_graph" />
+
+
+            <include
+                android:id="@+id/list_categories"
+                layout="@layout/fragment_list_categories"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
