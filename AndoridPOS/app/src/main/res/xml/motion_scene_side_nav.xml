@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <Transition app:constraintSetStart="@id/nav_default"
-        app:constraintSetEnd="@layout/activity_main"
+        app:constraintSetEnd="@layout/activity_main_fix"
         app:duration="1200"
         app:motionInterpolator="easeInOut">
 

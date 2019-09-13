@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <Transition
-        android:id="@+id/click_toggle"
+    <Transition android:id="@+id/click_toggle"
         app:constraintSetStart="@layout/activity_main_fix"
         app:constraintSetEnd="@layout/activity_main_fix_illusation"
         app:duration="100"
         app:motionInterpolator="easeInOut">
 
-        <OnClick
+        <!--<OnClick
             app:targetId="@+id/toggle_img2"
-            app:clickAction="toggle"/>
+            app:clickAction="toggle"/>-->
 
         <!--<OnSwipe
             app:touchAnchorId="@+id/view3"
@@ -29,8 +29,7 @@
 
     </Transition>
 
-    <Transition
-        android:id="@+id/swipe_left_nav"
+    <Transition android:id="@+id/swipe_left_nav"
         app:constraintSetStart="@layout/activity_main_fix_illusation"
         app:constraintSetEnd="@layout/activity_main_fix"
         app:duration="100"
@@ -44,16 +43,15 @@
             app:touchAnchorSide="left"
             app:onTouchUp="autoComplete"/>
 
-        <OnClick
+        <!--<OnClick
             app:targetId="@+id/arrow_back2"
-            app:clickAction="toggle"/>
+            app:clickAction="toggle"/>-->
 
     </Transition>
 
-    <Transition
-        android:id="@+id/swipe_side_categories"
+    <Transition android:id="@+id/swipe_side_categories"
         app:constraintSetStart="@layout/activity_main_fix_illusation"
-        app:constraintSetEnd="@layout/activity_main_fix"
+        app:constraintSetEnd="@layout/activity_main_fix_categories"
         app:duration="100"
         app:motionInterpolator="linear">
 
@@ -67,9 +65,86 @@
                 android:visibility="gone"
                 android:alpha="0"
                 app:motionTarget="@+id/my_nav_host_fragment2"
+                app:transitionEasing="standard"/>
+
+            <KeyAttribute
+                android:visibility="visible"
+                android:alpha="1"
+                app:motionTarget="@+id/list_categories"
+                app:transitionEasing="standard"/>
+
+        </KeyFrameSet>
+
+    </Transition>
+
+    <Transition android:id="@+id/swipe_left_nav_categories"
+        app:constraintSetStart="@layout/activity_main_fix_categories"
+        app:constraintSetEnd="@layout/activity_main_fix_illusation_categories"
+        app:duration="100"
+        app:motionInterpolator="linear">
+
+        <OnSwipe
+            app:touchAnchorId="@+id/materialcard1"
+            app:touchRegionId="@+id/materialcard1"
+            app:touchAnchorSide="right"
+            app:dragDirection="dragRight"
+            app:onTouchUp="autoComplete"/>
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:visibility="gone"
+                android:alpha="0"
+                app:motionTarget="@+id/my_nav_host_fragment2"
+                app:transitionEasing="linear"/>
+
+            <KeyAttribute
+                android:visibility="visible"
+                android:alpha="1"
+                app:motionTarget="@+id/list_categories"
                 app:transitionEasing="linear"/>
 
         </KeyFrameSet>
+
+    </Transition>
+
+    <Transition android:id="@+id/swipe_left_nav_products"
+        app:constraintSetStart="@layout/activity_main_fix_illusation_categories"
+        app:constraintSetEnd="@layout/activity_main_fix"
+        app:duration="100"
+        app:motionInterpolator="linear">
+
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@+id/side_product"/>
+
+        <KeyFrameSet>
+
+            <KeyAttribute
+                android:visibility="visible"
+                android:alpha="1"
+                app:motionTarget="@+id/my_nav_host_fragment2"
+                app:transitionEasing="standard"/>
+
+            <KeyAttribute
+                android:visibility="gone"
+                android:alpha="0"
+                app:motionTarget="@+id/list_categories"
+                app:transitionEasing="standard"/>
+
+        </KeyFrameSet>
+
+    </Transition>
+
+    <Transition android:id="@+id/categories_list_edit"
+        app:constraintSetStart="@layout/activity_main_fix_edit_categories"
+        app:constraintSetEnd="@layout/activity_main_fix_categories"
+        app:duration="100"
+        app:motionInterpolator="linear">
+
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@+id/add_img2"/>
+
 
     </Transition>
 

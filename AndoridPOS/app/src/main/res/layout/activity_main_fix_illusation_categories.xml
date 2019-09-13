@@ -31,7 +31,7 @@
         android:id="@+id/materialcard1"
         android:layout_width="391dp"
         android:layout_height="0dp"
-        android:background="@drawable/card_corner_radius"
+        android:background="#FFFFFF"
         android:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -66,7 +66,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Product"
+        android:text="Categories"
         android:textColor="#501010"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/toggle_img2"
@@ -80,8 +80,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:alpha="0"
-        android:visibility="gone"
+        android:alpha="1"
         app:layout_constraintBottom_toBottomOf="@id/view3"
         app:layout_constraintEnd_toEndOf="@id/view3"
         app:layout_constraintTop_toTopOf="@id/view3"
@@ -102,13 +101,25 @@
         app:srcCompat="@drawable/ic_menu_black_24dp"
         tools:visibility="invisible" />
 
+    <include
+        android:id="@+id/list_categories"
+        layout="@layout/fragment_list_categories"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="1"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/materialcard1"
+        app:layout_constraintEnd_toEndOf="@id/view3"
+        app:layout_constraintStart_toStartOf="@id/view3"
+        app:layout_constraintTop_toBottomOf="@id/view3" />
+
     <fragment
         android:id="@+id/my_nav_host_fragment2"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:elevation="1dp"
-        android:visibility="visible"
+        android:elevation="0dp"
+        android:visibility="gone"
         app:defaultNavHost="true"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:layout_constraintBottom_toBottomOf="@+id/materialcard1"
@@ -117,18 +128,6 @@
         app:layout_constraintStart_toStartOf="@id/view3"
         app:layout_constraintTop_toBottomOf="@+id/view3"
         app:navGraph="@navigation/nav_graph" />
-
-    <include
-        android:id="@+id/list_categories"
-        layout="@layout/fragment_list_categories"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:alpha="0"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/materialcard1"
-        app:layout_constraintEnd_toEndOf="@id/view3"
-        app:layout_constraintStart_toStartOf="@id/view3"
-        app:layout_constraintTop_toBottomOf="@id/view3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

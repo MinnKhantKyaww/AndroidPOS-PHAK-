@@ -9,72 +9,66 @@
             type="com.example.andoridpos.ui.category.CategoriesEditViewModel" />
     </data>
 
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:elevation="15dp">
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/edit_category"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/category_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text='@{viewModel.category.id > 0 ? @string/edit_category("Edit") : @string/edit_category("Create")}'
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutCategoryName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="@string/category_name"
-        app:layout_constraintEnd_toEndOf="@+id/category_title"
-        app:layout_constraintStart_toStartOf="@+id/category_title"
-        app:layout_constraintTop_toBottomOf="@+id/category_title">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/edit_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@={viewModel.category.name}"
-            android:padding="16dp"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnCancel"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="@android:string/cancel"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnSave"
-        app:layout_constraintEnd_toStartOf="@+id/btnSave" />
+            <TextView
+                android:id="@+id/category_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text='@{viewModel.category.id > 0 ? @string/edit_category("Edit") : @string/edit_category("Create")}'
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSave"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="Save"
-        android:onClick="@{v -> viewModel.save()}"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutCategoryName"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCategoryName" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancel"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@android:string/cancel"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btnSave"
+                app:layout_constraintEnd_toStartOf="@+id/btnSave" />
 
-   </RelativeLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSave"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="@{v -> viewModel.save()}"
+                android:text="Save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayoutCategoryName"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCategoryName" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutCategoryName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/category_name"
+                app:layout_constraintEnd_toEndOf="@+id/category_title"
+                app:layout_constraintStart_toStartOf="@+id/category_title"
+                app:layout_constraintTop_toBottomOf="@+id/category_title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@={viewModel.category.name}" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
