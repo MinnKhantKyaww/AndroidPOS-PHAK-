@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<layout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.MainActivity">
@@ -8,9 +8,11 @@
         <variable
             name="viewModel"
             type="com.example.andoridpos.ui.category.CategoriesEditViewModel" />
-    </data>
+    </data>-->
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main_fix_motion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -58,45 +60,6 @@
             android:text="@={viewModel.category.name}" />
     </com.google.android.material.textfield.TextInputLayout>-->
 
-    <TextView
-        android:id="@+id/category_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="334dp"
-        android:text='@{viewModel.category.id > 0 ? @string/edit_category("Edit") : @string/edit_category("Create")}'
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/edit_dialog"
-        app:layout_constraintStart_toEndOf="@+id/edit_dialog"
-        app:layout_constraintTop_toTopOf="@+id/edit_dialog" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/edit_dialog"
-        android:layout_width="350dp"
-        android:layout_height="300dp"
-        app:cardBackgroundColor="#918C8C"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/materialcard1"
-        app:layout_constraintEnd_toEndOf="@id/materialcard1"
-        app:layout_constraintStart_toStartOf="@id/materialcard1"
-        app:layout_constraintTop_toBottomOf="@id/view3">
-
-    </com.google.android.material.card.MaterialCardView>
-
-       <!-- <include
-            android:id="@+id/edit_cat"
-            layout="@layout/fragment_category_edit"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:elevation="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </com.google.android.material.card.MaterialCardView>-->
-
     <FrameLayout
         android:id="@+id/materialcard1"
         android:layout_width="0dp"
@@ -109,6 +72,32 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
+
+    <!-- <com.google.android.material.card.MaterialCardView
+        android:id="@+id/edit_dialog"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        app:cardBackgroundColor="#918C8C"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/materialcard1"
+        app:layout_constraintEnd_toEndOf="@id/materialcard1"
+        app:layout_constraintStart_toStartOf="@id/materialcard1"
+        app:layout_constraintTop_toBottomOf="@id/view3">
+
+    </com.google.android.material.card.MaterialCardView>-->
+
+    <!-- <include
+            android:id="@+id/edit_cat"
+            layout="@layout/fragment_category_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.google.android.material.card.MaterialCardView>-->
 
     <ImageView
         android:id="@+id/arrow_back2"
@@ -135,6 +124,32 @@
         app:layout_constraintTop_toTopOf="@id/view3"
         app:srcCompat="@drawable/ic_menu_black_24dp" />
 
+    <ImageView
+        android:id="@+id/add_img2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:alpha="1"
+        app:layout_constraintBottom_toBottomOf="@id/view3"
+        app:layout_constraintEnd_toEndOf="@id/view3"
+        app:layout_constraintTop_toTopOf="@id/view3"
+        app:srcCompat="@drawable/ic_add" />
+
+    <TextView
+        android:id="@+id/category_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="334dp"
+        android:text='@{viewModel.category.id > 0 ? @string/edit_category("Edit") : @string/edit_category("Create")}'
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/edit_dialog"
+        app:layout_constraintStart_toEndOf="@+id/edit_dialog"
+        app:layout_constraintTop_toTopOf="@+id/edit_dialog" />
+
     <TextView
         android:id="@+id/textView13"
         android:layout_width="150dp"
@@ -149,19 +164,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/toggle_img2"
         app:layout_constraintTop_toTopOf="@+id/toggle_img2" />
-
-    <ImageView
-        android:id="@+id/add_img2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:alpha="1"
-        app:layout_constraintBottom_toBottomOf="@id/view3"
-        app:layout_constraintEnd_toEndOf="@id/view3"
-        app:layout_constraintTop_toTopOf="@id/view3"
-        app:srcCompat="@drawable/ic_add" />
 
     <View
         android:id="@+id/view3"
@@ -230,4 +232,4 @@
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-</layout>
+<!--</layout>-->

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f869727-3152-4d7e-aa17-c6254934eb61" name="Default Changelist" comment="" />
+    <list default="true" id="7f869727-3152-4d7e-aa17-c6254934eb61" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/AndoridPOS/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AndoridPOS/app/src/main/java/com/example/andoridpos/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/AndoridPOS/app/src/main/java/com/example/andoridpos/ui/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AndoridPOS/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndoridPOS/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AndoridPOS/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/AndoridPOS/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AndoridPOS/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/AndoridPOS/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +34,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -41,7 +47,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
