@@ -17,6 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 import com.team.androidpos.R;
 
@@ -35,32 +36,30 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
-        CoordinatorLayout listContent = findViewById(R.id.list_content);
+        MaterialCardView listContent = findViewById(R.id.list_content);
         NavigationView navigationView = findViewById(R.id.navigationView);
 
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_closed) {
 
             private float scale = 6f;
-
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
                 float slideX = drawerView.getWidth() * slideOffset;
-                listContent.setTranslationX(slideX);
-                listContent.setScaleX(1 - (slideOffset / scale));
-                listContent.setScaleY(1 - (slideOffset / scale));
-
+                    listContent.setTranslationX(slideX);
+                    listContent.setTranslationZ(slideX / 2);
+                    listContent.setScaleX(1 - (slideOffset / scale));
+                    listContent.setScaleY(1 - (slideOffset / scale));
+                    listContent.setElevation(8f);
+                    listContent.setRadius(20f);
             }
         };
-
         drawerLayout.setScrimColor(Color.TRANSPARENT);
         drawerLayout.setDrawerElevation(0f);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-            Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp();
-
+        Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp();
         NavigationUI.setupWithNavController(navigationView, Navigation.findNavController(this, R.id.my_nav_host_fragment));
-
     }
 
     @Override

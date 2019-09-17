@@ -21,36 +21,35 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
 import com.example.andoridpos.R;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle toggle;
 
+    private DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_fix);
+        setContentView(R.layout.activity_main_test1);
 
-       /* Toolbar toolbar = findViewById(R.id.tool_bar);
-        setSupportActionBar(toolbar);*/
-
-/*        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        drawerLayout = findViewById(R.id.drawer_layout);
+       Toolbar  toolbar = findViewById(R.id.toolbar);
+       setSupportActionBar(toolbar);
+        drawerLayout = findViewById(R.id.drawerLayout);
 
          toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
         toggle.setToolbarNavigationClickListener(v -> {
             Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp();
-        });*/
+        });
 
-        /*NavigationView navigationView = findViewById(R.id.navigation_view);
-
-
-        NavigationUI.setupWithNavController(navigationView, Navigation.findNavController(this, R.id.my_nav_host_fragment));*/
+        NavigationView navigationView = findViewById(R.id.navigationView);
+        NavigationUI.setupWithNavController(navigationView, Navigation.findNavController(this, R.id.my_nav_host_fragment));
     }
 
     @Override
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void switchToggle(boolean enable) {
-     //   toggle.setDrawerIndicatorEnabled(enable);
+       //toggle.setDrawerIndicatorEnabled(enable);
     }
 
     public void hideKeyboard() {

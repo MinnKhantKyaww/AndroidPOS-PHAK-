@@ -28,24 +28,6 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/edit_dialog"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:background="#918C8C"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent">
-
-        <include
-            android:id="@+id/edit_cat"
-            layout="@layout/fragment_category_edit"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </com.google.android.material.card.MaterialCardView>
-
     <FrameLayout
         android:id="@+id/materialcard1"
         android:layout_width="0dp"

@@ -4,6 +4,9 @@
     <string name="edit_category">%s Category</string>
     <string name="require_cateogry_name">Please enter name</string>
 
+    <string name="drawer_open">Drawer Open</string>
+    <string name="drawer_closed">Drawer Closed</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="category_name">Category name</string>
