@@ -50,8 +50,15 @@ public class MainActivity extends AppCompatActivity {
                     listContent.setTranslationZ(slideX / 2);
                     listContent.setScaleX(1 - (slideOffset / scale));
                     listContent.setScaleY(1 - (slideOffset / scale));
-                    listContent.setElevation(8f);
-                    listContent.setRadius(20f);
+                    if(slideOffset == 1f || slideOffset == 0.5f) {
+                        listContent.setElevation(8f);
+                        listContent.setRadius(20f);
+                        getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
+                    }else if(slideOffset == 0f || slideOffset == 0.5f) {
+                        listContent.setElevation(0f);
+                        listContent.setRadius(0f);
+                        getWindow().setStatusBarColor(Color.parseColor("#1E8B27"));
+                    }
             }
         };
         drawerLayout.setScrimColor(Color.TRANSPARENT);
