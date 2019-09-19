@@ -12,10 +12,16 @@ import com.team.androidpos.R;
 
 public class DrawerContent extends MotionLayout implements DrawerLayout.DrawerListener {
 
-    //private DrawerLayout drawerLayout = findViewById(R.id.motionLayout);
-
     public DrawerContent(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    public DrawerContent(Context context) {
+        super(context);
+    }
+
+    public DrawerContent(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
     @Override
@@ -41,7 +47,8 @@ public class DrawerContent extends MotionLayout implements DrawerLayout.DrawerLi
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        //drawerLayout.addDrawerListener(this);
+        DrawerLayout drawerLayout = (DrawerLayout)getParent();
+        drawerLayout.addDrawerListener(this);
     }
 
 
