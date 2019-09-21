@@ -51,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
                     listContent.setScaleX(1 - (slideOffset / scale));
                     listContent.setScaleY(1 - (slideOffset / scale));
                     if(slideOffset == 1f || slideOffset == 0.5f) {
-                        getWindow().setStatusBarColor(Color.parseColor("#F0F0F0"));
                         listContent.setElevation(8f);
                         listContent.setRadius(20f);
-                    }else{
-                        getWindow().setStatusBarColor(Color.parseColor("#83AD53"));
-                    listContent.setElevation(0f);
-                    listContent.setRadius(0f);
+                        getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
+                    }else if(slideOffset == 0f || slideOffset == 0.5f) {
+                        listContent.setElevation(0f);
+                        listContent.setRadius(0f);
+                        getWindow().setStatusBarColor(Color.parseColor("#1E8B27"));
                     }
             }
         };
@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.setDrawerElevation(0f);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
         Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp();
         NavigationUI.setupWithNavController(navigationView, Navigation.findNavController(this, R.id.my_nav_host_fragment));
     }
