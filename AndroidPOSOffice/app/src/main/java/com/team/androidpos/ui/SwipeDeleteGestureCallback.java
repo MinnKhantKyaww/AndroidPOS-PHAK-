@@ -11,10 +11,14 @@ import android.os.Build;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.team.androidpos.R;
+import com.team.androidpos.ui.category.CategoriesViewModel;
+import com.team.androidpos.ui.category.CategoryAndProductCountAdapter;
 
 public class SwipeDeleteGestureCallback extends ItemTouchHelper.SimpleCallback {
 
@@ -56,8 +60,8 @@ public class SwipeDeleteGestureCallback extends ItemTouchHelper.SimpleCallback {
 
         if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
             float width = view.getHeight() / 3;
-            //float tX = (dX * view.getHeight()) / view.getWidth();
-            float tX = dX;
+            float tX = (dX * view.getHeight()) / view.getWidth();
+            //float tX = dX;
 
             RectF background = new RectF(view.getRight() + tX, view.getTop(), view.getRight(), view.getBottom());
             c.drawRect(background, paint);

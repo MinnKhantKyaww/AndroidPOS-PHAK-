@@ -75,7 +75,6 @@ public class CategoryAndProductCountAdapter extends ListAdapter<CategoryAndProdu
             binding.setVariable(BR.obj, obj);
             binding.executePendingBindings();
         }
-
     }
 
 }

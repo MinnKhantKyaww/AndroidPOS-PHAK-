@@ -54,4 +54,8 @@ public class ProductsFragment extends ListFragment {
     protected void deleteItemAt(int position) {
         viewModel.delete(adapter.getItemAt(position).getId());
     }
+
+    @Override
+    protected void restoreItemAt() {
+    }
 }

@@ -50,14 +50,22 @@ public class MainActivity extends AppCompatActivity {
                     listContent.setTranslationZ(slideX / 2);
                     listContent.setScaleX(1 - (slideOffset / scale));
                     listContent.setScaleY(1 - (slideOffset / scale));
-                    listContent.setElevation(8f);
-                    listContent.setRadius(20f);
+                    if(slideOffset == 1f || slideOffset == 0.5f) {
+                        getWindow().setStatusBarColor(Color.parseColor("#F0F0F0"));
+                        listContent.setElevation(8f);
+                        listContent.setRadius(20f);
+                    }else{
+                        getWindow().setStatusBarColor(Color.parseColor("#83AD53"));
+                    listContent.setElevation(0f);
+                    listContent.setRadius(0f);
+                    }
             }
         };
         drawerLayout.setScrimColor(Color.TRANSPARENT);
         drawerLayout.setDrawerElevation(0f);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
         Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp();
         NavigationUI.setupWithNavController(navigationView, Navigation.findNavController(this, R.id.my_nav_host_fragment));
     }
