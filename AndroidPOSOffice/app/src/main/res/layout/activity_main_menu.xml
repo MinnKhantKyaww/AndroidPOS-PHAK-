@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.team.androidpos.ui.DrawerContent xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/motion"
+    android:id="@+id/drawer_menu"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/motion_scene_menu"
-    android:layout_gravity="start"
     app:showPaths="true">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="220dp"
         android:layout_height="0dp"
+        android:layout_gravity="start"
         android:elevation="0dp"
         app:headerLayout="@layout/layout_navigation_header"
         app:itemBackground="@drawable/nav_item_background"
@@ -21,4 +21,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/menu_nav" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.team.androidpos.ui.DrawerContent>

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
@@ -36,32 +35,16 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
-        //MaterialCardView listContent = findViewById(R.id.list_content);
-        DrawerContent drawerContent = findViewById(R.id.motion_content);
+       // MaterialCardView listContent = findViewById(R.id.list_content);
         NavigationView navigationView = findViewById(R.id.navigationView);
 
-      /*  toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
-                    drawerLayout.closeDrawer(Gravity.RIGHT);
-                } else {
-                    drawerLayout.openDrawer(Gravity.RIGHT);
-                }
-            }
-        });
-*/
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_closed) {
 
-           // private float scale = 6f;
+            private float scale = 6f;
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
-               // drawerContent
                 /*float slideX = drawerView.getWidth() * slideOffset;
                     listContent.setTranslationX(slideX);
                     listContent.setTranslationZ(slideX / 2);
@@ -79,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         drawerLayout.setScrimColor(Color.TRANSPARENT);
-        drawerLayout.setDrawerElevation(0f);
+        //drawerLayout.setDrawerElevation(0f);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp();

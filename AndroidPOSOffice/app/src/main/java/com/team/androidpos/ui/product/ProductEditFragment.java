@@ -257,7 +257,7 @@ public class ProductEditFragment extends Fragment {
 
         Intent contentIntent = new Intent(Intent.ACTION_GET_CONTENT);
         contentIntent.setType("image/*");
-
+        //implict intent
         Intent pickImageIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
         Intent chooserIntent = Intent.createChooser(contentIntent, "Select Image Browser");
@@ -267,6 +267,7 @@ public class ProductEditFragment extends Fragment {
     }
 
     private File createImageFile() throws IOException {
+
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH).format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File image = File.createTempFile(imageFileName, ".jpg",
