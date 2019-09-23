@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
@@ -35,17 +36,33 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
-        MaterialCardView listContent = findViewById(R.id.list_content);
+        //MaterialCardView listContent = findViewById(R.id.list_content);
+        DrawerContent drawerContent = findViewById(R.id.motion_content);
         NavigationView navigationView = findViewById(R.id.navigationView);
 
+      /*  toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
+                    drawerLayout.closeDrawer(Gravity.RIGHT);
+                } else {
+                    drawerLayout.openDrawer(Gravity.RIGHT);
+                }
+            }
+        });
+*/
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_closed) {
 
-            private float scale = 6f;
+           // private float scale = 6f;
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
-                float slideX = drawerView.getWidth() * slideOffset;
+               // drawerContent
+                /*float slideX = drawerView.getWidth() * slideOffset;
                     listContent.setTranslationX(slideX);
                     listContent.setTranslationZ(slideX / 2);
                     listContent.setScaleX(1 - (slideOffset / scale));
@@ -58,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                         listContent.setElevation(0f);
                         listContent.setRadius(0f);
                         getWindow().setStatusBarColor(Color.parseColor("#1E8B27"));
-                    }
+                    }*/
             }
         };
         drawerLayout.setScrimColor(Color.TRANSPARENT);

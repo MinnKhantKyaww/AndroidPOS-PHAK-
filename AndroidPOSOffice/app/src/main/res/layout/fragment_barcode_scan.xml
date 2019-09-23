@@ -11,6 +11,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </com.journeyapps.barcodescanner.DecoratedBarcodeView>
+
+    <androidx.appcompat.widget.AppCompatToggleButton
+        android:id="@+id/btnTorch"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/torch_background"
+        android:checked="true"
+        android:text="ToggleButton"
+        android:elevation="0dp"
+        android:textOff=""
+        android:textOn=""
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

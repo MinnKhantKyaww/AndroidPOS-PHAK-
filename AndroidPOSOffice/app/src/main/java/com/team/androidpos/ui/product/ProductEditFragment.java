@@ -36,6 +36,7 @@ import com.team.androidpos.model.entity.Category;
 import com.team.androidpos.model.entity.Product;
 import com.team.androidpos.ui.MainActivity;
 import com.team.androidpos.util.FileUtil;
+import com.team.androidpos.util.PermissionUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -50,7 +51,6 @@ public class ProductEditFragment extends Fragment {
 
     static final String KEY_PRODUCT_ID = "product_id";
     private static final int REQUEST_IMAGE_CAPTURE = 1;
-    private static final int PERMISSION_TAKE_PHOTO = 2;
     private static final int REQUEST_PICK_IMAGE = 3;
 
     private ProductEditViewModel viewModel;
@@ -211,7 +211,7 @@ public class ProductEditFragment extends Fragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PERMISSION_TAKE_PHOTO) {
+        if (requestCode == PermissionUtil.PERMISSION_CAMERA) {
             if (grantResults.length > 0 &&
                 grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 dispatchTakePictureIntent();
@@ -229,10 +229,7 @@ public class ProductEditFragment extends Fragment {
     }
 
     private void dispatchTakePictureIntent() {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.CAMERA},
-                    PERMISSION_TAKE_PHOTO);
+        if (!PermissionUtil.hasCameraPermission(this)) {
             return;
         }
 

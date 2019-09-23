@@ -51,5 +51,4 @@ public class DrawerContent extends MotionLayout implements DrawerLayout.DrawerLi
         drawerLayout.addDrawerListener(this);
     }
 
-
 }
