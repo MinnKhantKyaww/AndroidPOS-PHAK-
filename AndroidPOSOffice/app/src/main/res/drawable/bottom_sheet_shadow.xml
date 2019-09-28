@@ -19,7 +19,7 @@
 
     </item>
 
-    <item android:top="8dp">
+    <item android:top="6dp">
 
         <shape>
             <solid

@@ -76,6 +76,22 @@ public class SaleProduct {
         this.saleId = saleId;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SaleProduct)) return false;
+        SaleProduct that = (SaleProduct) o;
+        return Double.compare(that.getPrice(), getPrice()) == 0 &&
+                getQuantity() == that.getQuantity() &&
+                Objects.equals(getId(), that.getId()) &&
+                Objects.equals(getName(), that.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getPrice(), getQuantity());
+    }
+
     public class SaleProductId {
         @ColumnInfo(name = "product_id")
         private int productId;
@@ -108,15 +124,15 @@ public class SaleProduct {
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (!(o instanceof SaleProductId)) return false;
             SaleProductId that = (SaleProductId) o;
-            return productId == that.productId &&
-                    saleTime == that.saleTime;
+            return getProductId() == that.getProductId() &&
+                    getSaleTime() == that.getSaleTime();
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(productId, saleTime);
+            return Objects.hash(getProductId(), getSaleTime());
         }
     }
 
