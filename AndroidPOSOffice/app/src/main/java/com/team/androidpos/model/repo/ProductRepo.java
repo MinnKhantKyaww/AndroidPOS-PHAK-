@@ -53,7 +53,7 @@ public class ProductRepo extends CudRepo<Product> {
 
     public LiveData<PagedList<ProductAndCategoryVO>> getAvailableProduct(@Nullable Integer categoryId) {
         StringBuilder sb = new StringBuilder("SELECT p.id, p.name, p.image, p.price, c.name AS category FROM Product p " +
-                "LEFT JOIN Category c ON p.category_id = c.id WHERE p.available = ? ");
+                "LEFT JOIN Category c ON p.category_id = c.id WHERE p.available = 1 ");
 
         List<Object> params = new ArrayList<>();
 
@@ -65,6 +65,10 @@ public class ProductRepo extends CudRepo<Product> {
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(sb.toString(), params.toArray());
 
         return new LivePagedListBuilder<>(dao.findProductAndCategory(query), 25).build();
+    }
+
+    public ProductAndCategoryVO findByBarcode(String barcode) {
+        return dao.findByBarcode(barcode);
     }
 
 }

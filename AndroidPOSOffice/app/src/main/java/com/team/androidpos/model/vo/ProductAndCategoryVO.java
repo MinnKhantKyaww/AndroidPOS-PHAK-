@@ -57,7 +57,7 @@ public class ProductAndCategoryVO {
         saleProduct.setName(name);
         saleProduct.setPrice(price);
         saleProduct.getId().setProductId(id);
-
+        saleProduct.setCategory(category);
         return saleProduct;
     }
 

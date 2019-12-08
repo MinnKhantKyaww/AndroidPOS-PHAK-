@@ -2,12 +2,11 @@ package com.team.androidpos.model.entity;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.library.baseAdapters.BR;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-
-import com.team.androidpos.BR;
 
 @Entity(foreignKeys = @ForeignKey(
         entity = Category.class,
@@ -66,7 +65,7 @@ public class Product extends BaseObservable {
 
     public void setBarcode(String barcode) {
         this.barcode = barcode;
-        notifyPropertyChanged(com.team.androidpos.BR.barcode);
+        notifyPropertyChanged(BR.barcode);
     }
 
     public boolean isAvailable() {

@@ -16,6 +16,7 @@ public class FileUtil {
         BitmapFactory.Options options = new BitmapFactory.Options();
 
         options.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(context.getContentResolver().openInputStream(uri), null, options);
 
         final int REQUIRED_SIZE = 240;
 
@@ -23,7 +24,7 @@ public class FileUtil {
         int height_tmp = options.outHeight;
 
         int scale = 1;
-        while(width_tmp / 2 < REQUIRED_SIZE || height_tmp / 2 < REQUIRED_SIZE) {
+        while(width_tmp / 2 >= REQUIRED_SIZE || height_tmp / 2 >= REQUIRED_SIZE) {
 
             width_tmp /= 2;
             height_tmp /= 2;

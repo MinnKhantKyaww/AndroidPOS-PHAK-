@@ -11,7 +11,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground">
 
         <TextView
             android:id="@+id/textView9"
@@ -26,6 +27,7 @@
             app:layout_constraintEnd_toStartOf="@+id/textView11"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:text="@{obj.name}"
             tools:text="Cocacola" />
 
         <TextView
@@ -36,6 +38,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView9"
             app:layout_constraintTop_toBottomOf="@+id/textView9"
+            android:text="@{obj.category}"
             tools:text="Drink" />
 
         <TextView
@@ -49,6 +52,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:text="@{obj.priceAndCount}"
             tools:text="3 x 300" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

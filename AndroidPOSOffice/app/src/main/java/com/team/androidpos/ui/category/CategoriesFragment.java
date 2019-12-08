@@ -65,27 +65,27 @@ public class CategoriesFragment extends ListFragment {
 
     @Override
     protected void deleteItemAt(int position) {
-        category = adapter.getItemAt(position);
-        categoryPosition = position;
-        oldId = adapter.getItemAt(position).getCategory().getId();
-        oldName = adapter.getItemAt(position).getCategory().getName();
+//        category = adapter.getItemAt(position);
+//        categoryPosition = position;
+//        oldId = adapter.getItemAt(position).getCategory().getId();
+//        oldName = adapter.getItemAt(position).getCategory().getName();
         viewModel.delete(adapter.getItemAt(position).getCategory().getId());
        // viewModel.getCategories().getValue().get(position).getCategory().setId(oldId);
         //adapter.notifyItemRemoved(position);
     }
 
-    @Override
-    protected void restoreItemAt() {
-        //    viewModel.getCategories().getValue().get(categoryPosition).getCategory().setId(oldId);
-        viewModel.getCategories().getValue().add(categoryPosition, category);
-        //viewModel.getCategories().observe();
-        // viewModel.getCategories().getValue().add(categoryPosition, category);
+//    @Override
+//    protected void restoreItemAt() {
+//        //    viewModel.getCategories().getValue().get(categoryPosition).getCategory().setId(oldId);
+//        viewModel.getCategories().getValue().add(categoryPosition, category);
+//        //viewModel.getCategories().observe();
+//        // viewModel.getCategories().getValue().add(categoryPosition, category);
+//
+//        //viewModel.getCategories().getValue().add(categoryPosition, category);
+//        // viewModel.getCategories().getValue().add(categoryPosition, adapter.getItemAt(oldData));
+//    }
 
-        //viewModel.getCategories().getValue().add(categoryPosition, category);
-        // viewModel.getCategories().getValue().add(categoryPosition, adapter.getItemAt(oldData));
-    }
 
-    ;
 
     private void navigateEdit(Bundle args) {
         FragmentTransaction ft = requireFragmentManager().beginTransaction();

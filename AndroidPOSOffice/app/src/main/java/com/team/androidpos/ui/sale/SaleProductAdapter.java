@@ -15,6 +15,8 @@ import com.team.androidpos.BR;
 import com.team.androidpos.R;
 import com.team.androidpos.model.entity.Sale;
 import com.team.androidpos.model.entity.SaleProduct;
+import com.team.androidpos.model.vo.ProductAndCategoryVO;
+import com.team.androidpos.ui.AdapterItemClickListener;
 
 import java.util.Objects;
 
@@ -33,6 +35,8 @@ public class SaleProductAdapter extends ListAdapter<SaleProduct, SaleProductAdap
         }
     };
 
+    private AdapterItemClickListener<SaleProduct> adapterItemClickListener;
+
     SaleProductAdapter() {
         super(DIFF_CALLBACK);
     }
@@ -50,6 +54,10 @@ public class SaleProductAdapter extends ListAdapter<SaleProduct, SaleProductAdap
         holder.bind(getItem(position));
     }
 
+    public SaleProduct getItemAt(int position) {
+        return getItem(position);
+    }
+
     class SaleProductViewHolder extends RecyclerView.ViewHolder {
 
 
@@ -57,10 +65,20 @@ public class SaleProductAdapter extends ListAdapter<SaleProduct, SaleProductAdap
 
         public SaleProductViewHolder(@NonNull ViewDataBinding viewDataBinding) {
             super(viewDataBinding.getRoot());
+            this.binding = viewDataBinding;
+            itemView.setOnClickListener(v -> {
+                if (adapterItemClickListener != null) {
+                    adapterItemClickListener.onClick(getItem(getAdapterPosition()));
+                }
+            });
         }
 
         void bind(SaleProduct obj) {
             binding.setVariable(BR.obj, obj);
         }
+    }
+
+    public void setAdapterItemClickListener(AdapterItemClickListener<SaleProduct> adapterItemClickListener) {
+        this.adapterItemClickListener = adapterItemClickListener;
     }
 }

@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.InverseBindingAdapter;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class BindingUtil {
 
     @BindingAdapter("android:text")
@@ -17,12 +19,29 @@ public class BindingUtil {
 
     @BindingAdapter("android:text")
     public static void setNumber(TextView textView, double value) {
-        textView.setText(String.valueOf(value));
+        int abs = (int) value;
+        if ((value - abs) > 0.0) {
+            textView.setText(String.valueOf(value));
+        } else {
+            textView.setText(String.valueOf(abs));
+        }
+
     }
 
     @BindingAdapter("android:text")
     public static void setNumber(EditText editText, double value) {
         if (value > 0) editText.setText(String.valueOf(value));
+    }
+
+    @BindingAdapter(("android:text"))
+    public static void setNumber(EditText editText, int value) {
+        editText.setText((String.valueOf(value)));
+    }
+
+    @InverseBindingAdapter(attribute = "android:text")
+    public static int getNumber(EditText editText) {
+        String value = editText.getText().toString();
+        return value.isEmpty() ? 0 : Integer.parseInt(value);
     }
 
     @BindingAdapter("path")
@@ -33,7 +52,7 @@ public class BindingUtil {
     }
 
     @InverseBindingAdapter(attribute = "android:text")
-    public static double getNumber(EditText editText) {
+    public static double getFloatingNumber(EditText editText) {
         String value = editText.getText().toString();
         return value.isEmpty() ? 0.0 : Double.parseDouble(value);
     }

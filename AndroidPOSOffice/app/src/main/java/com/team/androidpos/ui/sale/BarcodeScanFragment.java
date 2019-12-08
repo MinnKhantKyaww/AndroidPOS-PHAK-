@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatToggleButton;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.ResultPoint;
@@ -31,10 +32,13 @@ public class BarcodeScanFragment extends Fragment {
 
     private String lastCode;
 
+    private SaleActionViewModel viewModel;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         beepManager = new BeepManager((requireActivity()));
+        viewModel = ViewModelProviders.of(requireActivity()).get(SaleActionViewModel.class);
     }
 
     @Nullable
@@ -57,12 +61,14 @@ public class BarcodeScanFragment extends Fragment {
         barcodeView.decodeContinuous(new BarcodeCallback() {
             @Override
             public void barcodeResult(BarcodeResult result) {
-                if(result.getText() == null || result.getText() == lastCode){
+                if(result.getText() == null || result.getText().equals(lastCode)){
                     return;
                 }
                 lastCode = result.getText();
                 Log.d("TAG", "code:" + result.getText());
                 beepManager.playBeepSound();
+
+                viewModel.findByBarcode(result.getText());
             }
 
             @Override

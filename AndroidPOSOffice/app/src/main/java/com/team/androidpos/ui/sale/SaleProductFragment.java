@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.team.androidpos.R;
 import com.team.androidpos.ui.ListFragment;
+import com.team.androidpos.ui.MainActivity;
 import com.team.androidpos.ui.product.ProductAndCategoryAdapter;
 import com.team.androidpos.util.PermissionUtil;
 
@@ -23,21 +25,53 @@ public class SaleProductFragment extends ListFragment {
 
     private ProductAndCategoryAdapter productAndCategoryAdapter;
     private SaleProductViewModel viewModel;
+
+    private SaleActionViewModel saleActionViewModel;
+
+    private View notiView;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         productAndCategoryAdapter = new ProductAndCategoryAdapter();
         productAndCategoryAdapter.setAdapterItemClickListener(vo -> {
-            // TODO
+            saleActionViewModel.addProduct(vo);
+
         });
+
+        saleActionViewModel = ViewModelProviders.of(requireActivity()).get(SaleActionViewModel.class);
+
         viewModel = ViewModelProviders.of(this).get(SaleProductViewModel.class);
         viewModel.products.observe(this, productAndCategoryAdapter::submitList);
+
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.menu_sale, menu);
+
+        notiView = menu.findItem(R.id.action_cart).getActionView();
+        notiView.setOnClickListener(v -> {
+
+            Navigation.findNavController(getView()).navigate(R.id.action_saleProductFragment_to_saleDetailFragment);
+        });
+
+        saleActionViewModel.sale.observe(this, sale -> {
+
+            if(notiView == null) {
+                return;
+            }
+
+            TextView tvCount = notiView.findViewById(R.id.tvSaleProductCount);
+            if(sale.getTotalProduct() > 0) {
+                tvCount.setText(String.valueOf(sale.getTotalProduct()));
+                tvCount.setVisibility(View.VISIBLE);
+            } else {
+                tvCount.setVisibility(View.GONE);
+            }
+        });
+
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -74,6 +108,13 @@ public class SaleProductFragment extends ListFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         viewModel.categoryId.setValue(null);
+        saleActionViewModel.init();
+
+        MainActivity activity = (MainActivity) requireActivity();
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        activity.switchToggle(true);
+
+
     }
 
     @Override
