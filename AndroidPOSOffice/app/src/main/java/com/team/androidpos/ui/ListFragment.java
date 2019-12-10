@@ -1,9 +1,12 @@
 package com.team.androidpos.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,7 +34,14 @@ public abstract class ListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_list_item, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_list_item, container, false);
+        RecyclerView recyclerView = root.findViewById(R.id.recyclerView);
+
+        int resId = R.anim.layout_anim_slide_bottom;
+        LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
+        recyclerView.setLayoutAnimation(animationController);
+        recyclerView.scheduleLayoutAnimation();
+        return root;
     }
 
     @Override
@@ -41,8 +51,13 @@ public abstract class ListFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         constraintLayout = view.findViewById(R.id.frag_list_item);
 
+        /*int resId = R.anim.layout_anim_slide_right;
+        LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);*/
+
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
+        //recyclerView.setLayoutAnimation(animationController);
+        //recyclerView.scheduleLayoutAnimation();
         recyclerView.setAdapter(adapter());
 
         if (listenSwipeDelete()) {
@@ -50,19 +65,19 @@ public abstract class ListFragment extends Fragment {
             callback.setOnSwipeDeleteListener(position -> {
                 new AlertDialog.Builder(requireContext())
                         .setTitle("Confirm Delete")
-                        .setCancelable(false)
                         .setMessage("Are you sure to delete?")
+                        .setCancelable(false)
                         .setNegativeButton(android.R.string.cancel, (di, i) -> {
                             adapter().notifyItemChanged(position);
                             di.dismiss();
                         })
                         .setPositiveButton(R.string.delete, (di, i) -> {
-                            positionID = position;
+                            //positionID = position;
                             deleteItemAt(position);
                             di.dismiss();
                             //adapter().notifyItemRemoved(position);
                            // adapter().notifyItemChanged(position);
-                            undoDelete();
+                           // undoDelete();
                         })
                         .show();
             });

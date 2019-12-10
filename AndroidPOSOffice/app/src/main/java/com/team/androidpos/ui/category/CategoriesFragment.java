@@ -74,8 +74,8 @@ public class CategoriesFragment extends ListFragment {
         //adapter.notifyItemRemoved(position);
     }
 
-//    @Override
-//    protected void restoreItemAt() {
+  @Override
+   protected void restoreItemAt() {
 //        //    viewModel.getCategories().getValue().get(categoryPosition).getCategory().setId(oldId);
 //        viewModel.getCategories().getValue().add(categoryPosition, category);
 //        //viewModel.getCategories().observe();
@@ -83,7 +83,7 @@ public class CategoriesFragment extends ListFragment {
 //
 //        //viewModel.getCategories().getValue().add(categoryPosition, category);
 //        // viewModel.getCategories().getValue().add(categoryPosition, adapter.getItemAt(oldData));
-//    }
+  }
 
 
 

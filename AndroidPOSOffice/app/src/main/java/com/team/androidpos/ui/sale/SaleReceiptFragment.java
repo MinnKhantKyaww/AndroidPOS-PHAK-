@@ -40,7 +40,7 @@ public class SaleReceiptFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        int nav = getArguments() != null ? getArguments().getInt(KEY_NAV_BACk, 0) : 1;
+        int nav = getArguments() != null ? getArguments().getInt(KEY_NAV_BACk, 1) : 1;
         if(nav == NAV_SALE_PRODUCT) {
             inflater.inflate(R.menu.menu_finish, menu);
             MainActivity activity =(MainActivity) requireActivity();

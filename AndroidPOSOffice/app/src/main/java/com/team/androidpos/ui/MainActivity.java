@@ -79,7 +79,10 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.setDrawerElevation(0f);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp();
+        toggle.setToolbarNavigationClickListener(v -> {
+            Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp();
+        });
+
         NavigationUI.setupWithNavController(navigationView, Navigation.findNavController(this, R.id.my_nav_host_fragment));
     }
 
