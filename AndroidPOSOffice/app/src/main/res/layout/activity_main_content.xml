@@ -28,7 +28,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#8BC34A"
+            android:background="#636463"
             android:theme="@style/AppTheme.AppbarOverlay">
 
             <androidx.appcompat.widget.Toolbar

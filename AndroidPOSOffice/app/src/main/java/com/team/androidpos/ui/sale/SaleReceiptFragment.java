@@ -1,5 +1,6 @@
 package com.team.androidpos.ui.sale;
 
+import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,13 +16,15 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.shape.MaterialShapeDrawable;
 import com.team.androidpos.R;
 import com.team.androidpos.databinding.SaleReceiptBinding;
 import com.team.androidpos.model.entity.SaleProduct;
 import com.team.androidpos.ui.MainActivity;
 
 public class SaleReceiptFragment extends Fragment {
-
+//https://blog.octo.com/android-materialshapedrawable/
     static final String KEY_SALE_ID = "sale_id";
     static final String KEY_NAV_BACk = "nav_back";
 
@@ -31,11 +34,18 @@ public class SaleReceiptFragment extends Fragment {
     private SaleReceiptBinding saleReceiptBinding;
     private SaleReceiptViewModel viewModel;
 
+    private MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable();
+
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         viewModel = ViewModelProviders.of(this).get(SaleReceiptViewModel.class);
+        MaterialCardView materialCardView = getView().findViewById(R.id.recepit_card);
+        materialCardView.setBackground(shapeDrawable);
+        int cornerSize = getResources(). getDimensionPixelSize (R.dimen.corner_size);
     }
 
     @Override
@@ -62,7 +72,7 @@ public class SaleReceiptFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.saleReceiptBinding = SaleReceiptBinding.inflate(inflater, container, false);
+        saleReceiptBinding = SaleReceiptBinding.inflate(inflater, container, false);
         saleReceiptBinding.setLifecycleOwner(this);
         saleReceiptBinding.setViewModel(viewModel);
         return saleReceiptBinding.getRoot();
