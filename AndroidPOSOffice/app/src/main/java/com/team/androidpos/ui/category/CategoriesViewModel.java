@@ -28,7 +28,6 @@ public class CategoriesViewModel extends AndroidViewModel {
     LiveData<List<CategoryAndProductCountVO>> getCategories() {
         if (categories == null) {
             categories = repo.getCategoryAndProductCount();
-        } else {
         }
         return categories;
     }

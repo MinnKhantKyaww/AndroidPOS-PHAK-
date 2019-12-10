@@ -1,5 +1,7 @@
 package com.team.androidpos.model.vo;
 
+import com.team.androidpos.model.entity.SaleProduct;
+
 import java.util.Objects;
 
 public class ProductAndCategoryVO {
@@ -48,6 +50,15 @@ public class ProductAndCategoryVO {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public SaleProduct toSaleProduct() {
+        SaleProduct saleProduct = new SaleProduct();
+        saleProduct.setName(name);
+        saleProduct.setPrice(price);
+        saleProduct.getId().setProductId(id);
+        saleProduct.setCategory(category);
+        return saleProduct;
     }
 
     @Override
