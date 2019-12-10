@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#212521</color>
-    <color name="colorPrimaryDark">#83AD53</color>
-    <color name="colorAccent">#4DB154</color>
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="colorNavItem">#8B8BC34A</color>
+    <color name="colorPrimary">#363636</color>
+    <color name="colorPrimaryDark">#242424</color>
+    <color name="colorAccent">#666666</color>
+    <color name="colorWhite">#525050</color>
+    <color name="colorNavItem">#8B535353</color>
+    <color name="colorSkyBlue">#53E3F0</color>
+    <color name="colorBlue">#00838F</color>
 </resources>

@@ -7,64 +7,64 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:showPaths="true"
-        android:layout_gravity="start"
-        android:elevation="5dp"
-        app:headerLayout="@layout/layout_navigation_header"
-        app:itemBackground="@drawable/nav_item_background"
-        app:itemTextColor="@color/nav_item_color"
-        app:menu="@menu/menu_nav" />
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:id="@+id/navigationView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:showPaths="true"-->
+<!--        android:layout_gravity="start"-->
+<!--        android:elevation="5dp"-->
+<!--        app:headerLayout="@layout/layout_navigation_header"-->
+<!--        app:itemBackground="@drawable/nav_item_background"-->
+<!--        app:itemTextColor="@color/nav_item_color"-->
+<!--        app:menu="@menu/menu_nav" />-->
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/list_content"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleX="1"
-        android:scaleY="1"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="1"
-        tools:visibility="gone">
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:id="@+id/list_content"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:scaleX="1"-->
+<!--        android:scaleY="1"-->
+<!--        app:cardElevation="0dp"-->
+<!--        app:cardMaxElevation="0dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintWidth_percent="1"-->
+<!--        tools:visibility="gone">-->
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<!--        <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#8BC34A"
-                android:theme="@style/AppTheme.AppbarOverlay">
+<!--            <com.google.android.material.appbar.AppBarLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="#8BC34A"-->
+<!--                android:theme="@style/AppTheme.AppbarOverlay">-->
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:theme="@style/AppTheme.AppbarOverlay"
-                    app:title="@string/app_name" />
+<!--                <androidx.appcompat.widget.Toolbar-->
+<!--                    android:id="@+id/toolbar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="?attr/actionBarSize"-->
+<!--                    android:theme="@style/AppTheme.AppbarOverlay"-->
+<!--                    app:title="@string/app_name" />-->
 
-            </com.google.android.material.appbar.AppBarLayout>
+<!--            </com.google.android.material.appbar.AppBarLayout>-->
 
-            <fragment
-                android:id="@+id/my_nav_host_fragment"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:defaultNavHost="true"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-                app:navGraph="@navigation/nav_graph" />
+<!--            <fragment-->
+<!--                android:id="@+id/my_nav_host_fragment"-->
+<!--                android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                app:defaultNavHost="true"-->
+<!--                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"-->
+<!--                app:navGraph="@navigation/nav_graph" />-->
 
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+<!--        </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
 
-    </com.google.android.material.card.MaterialCardView>
+<!--    </com.google.android.material.card.MaterialCardView>-->
 
     <!--<LinearLayout
         android:id="@+id/content"

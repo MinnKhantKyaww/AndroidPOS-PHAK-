@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.team.androidpos.ui.DrawerContent xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/motion_scene_content"
-    app:layout_constraintWidth_percent="1"
     app:showPaths="true">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.61" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/list_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="335dp"
+        android:layout_height="0dp"
+        android:scaleY="0.9"
+        android:scaleX="0.9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"

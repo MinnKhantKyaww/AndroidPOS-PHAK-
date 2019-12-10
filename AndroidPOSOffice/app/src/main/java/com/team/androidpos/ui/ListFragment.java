@@ -60,7 +60,8 @@ public abstract class ListFragment extends Fragment {
                             positionID = position;
                             deleteItemAt(position);
                             di.dismiss();
-                            adapter().notifyItemRemoved(position);
+                            //adapter().notifyItemRemoved(position);
+                           // adapter().notifyItemChanged(position);
                             undoDelete();
                         })
                         .show();
@@ -85,7 +86,8 @@ public abstract class ListFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     restoreItemAt();
-                    adapter().notifyItemInserted(positionID);
+                    //adapter().notifyItemRemoved(positionID);
+                    //adapter().notifyItemInserted(positionID);
                 }
             });
             snackbar.show();
