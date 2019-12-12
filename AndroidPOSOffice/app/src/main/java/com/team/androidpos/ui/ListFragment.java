@@ -38,9 +38,9 @@ public abstract class ListFragment extends Fragment {
         RecyclerView recyclerView = root.findViewById(R.id.recyclerView);
 
         int resId = R.anim.layout_anim_slide_bottom;
-        LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
+        /*LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
         recyclerView.setLayoutAnimation(animationController);
-        recyclerView.scheduleLayoutAnimation();
+        recyclerView.scheduleLayoutAnimation();*/
         return root;
     }
 
