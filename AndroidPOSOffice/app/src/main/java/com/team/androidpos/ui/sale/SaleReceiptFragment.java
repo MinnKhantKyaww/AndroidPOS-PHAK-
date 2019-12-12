@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.shapes.ArcShape;
 import android.graphics.drawable.shapes.RoundRectShape;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
@@ -37,6 +39,7 @@ import com.team.androidpos.R;
 import com.team.androidpos.databinding.SaleReceiptBinding;
 import com.team.androidpos.model.entity.SaleProduct;
 import com.team.androidpos.ui.DrawArch;
+import com.team.androidpos.ui.EdgeArc;
 import com.team.androidpos.ui.MainActivity;
 
 public class SaleReceiptFragment extends Fragment {
@@ -87,12 +90,9 @@ public class SaleReceiptFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-
         saleReceiptBinding = SaleReceiptBinding.inflate(inflater, container, false);
         saleReceiptBinding.setLifecycleOwner(this);
         saleReceiptBinding.setViewModel(viewModel);
-
 
         return saleReceiptBinding.getRoot();
     }
@@ -101,12 +101,17 @@ public class SaleReceiptFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable(shapePathModel);
         MaterialCardView materialCardView = getView().findViewById(R.id.recepit_card);
+        ConstraintLayout constraintLayout = getView().findViewById(R.id.recepit_constrait);
+
         EdgeTreatment edgeTreatment = new EdgeTreatment();
         TriangleEdgeTreatment triangleEdgeTreatment = new TriangleEdgeTreatment(0f, true);
         BottomAppBarTopEdgeTreatment topEdgeTreatment = new BottomAppBarTopEdgeTreatment(2f, 2f, 2f);
 
+        //materialCardView.setCardBackgroundColor(Color.parseColor("#6F6D6D"));
+       // constraintLayout.setBackgroundColor(R.drawable.gradient_recepit);
+        materialCardView.setCardElevation(8);
+        materialCardView.setRadius(5);
 
         RectF rectRight = new RectF(materialCardView.getWidth() - 50,
                 materialCardView.getHeight() - 50,
@@ -116,30 +121,29 @@ public class SaleReceiptFragment extends Fragment {
         //triangleEdgeTreatment.getEdgePath(5f, 0f, shapePath);
         //drawArch = new DrawArch(10f, false, 5f, 3f, rectRight.right, 4f, 0f, 90f, materialCardView);
 
-        drawArch = new DrawArch();
-        drawArch.setDrawArcEdge(materialCardView);
-        //drawArch.setDrawArcEdge(2f, 3f, 30f, 4f, 0f, 90f, 10f, 10f, shapePath);
-        //topEdgeTreatment.getEdgePath(5f, 4f, shapePath);
-
-        //shapePathModel.setAllEdges(new TriangleEdgeTreatment(12f, true));
-        //shapePathModel.setTopEdge(new EdgeTreatment().getEdgePath(0.2f, shapeDrawable.getInterpolation(), new shapePath()));
-        // shapePathModel.setBottomEdge(new EdgeTreatment());
-        shapePathModel.setTopEdge(new TriangleEdgeTreatment(20f, true));
-        shapePathModel.setBottomEdge(new TriangleEdgeTreatment(20f, true));
-//        shapePathModel.setLeftEdge(new EdgeTreatment().getEdgePath(shapeDrawable.getLevel(),
-//                shapeDrawable.getInterpolation(), shapePath));
-        //shapePathModel.setLeftEdge(new BottomAppBarTopEdgeTreatment(10f, 5f, 8f));
+        //shapePathModel.setLeftEdge(new TriangleEdgeTreatment(8f, true));
+        //shapePathModel.setRightEdge(new TriangleEdgeTreatment(8f, true));
         shapePathModel.setAllCorners(new RoundedCornerTreatment(15f));
-        shapePathModel.setLeftEdge(new TriangleEdgeTreatment(8f, true));
-        shapePathModel.setRightEdge(new TriangleEdgeTreatment(8f, true));
-
-        shapeDrawable.setShadowRadius(5);
+        shapePathModel.setTopEdge(new EdgeArc(15f));
+        shapePathModel.setLeftEdge(new TriangleEdgeTreatment(10f, true));
+        shapePathModel.setRightEdge(new TriangleEdgeTreatment(10f , true));
+        MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable(shapePathModel);
         shapeDrawable.setShadowEnabled(true);
-        shapeDrawable.setShadowElevation(10);
+        shapeDrawable.setShadowElevation(8);
 
         MainActivity activity = (MainActivity) requireActivity();
         activity.switchToggle(false);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Rect padding = new Rect();
+        padding.set(3, 3, 3, 3);
+        shapeDrawable.setTint(ContextCompat.getColor(this.getContext(), R.color.colorMilk));
+        //shapeDrawable.setPaintStyle(Paint.Style.FILL);
+        //shapeDrawable.getPadding(padding);
+        shapeDrawable.setShadowColor(Color.parseColor("#8B535353"));
+        shapeDrawable.setUseTintColorForShadow(true);
+
+        materialCardView.setBackground(shapeDrawable);
+
         long saleId = getArguments() != null ? getArguments().getLong(KEY_SALE_ID, 0) : 0;
         if (saleId > 0) viewModel.saleId.setValue(saleId);
 
@@ -163,15 +167,7 @@ public class SaleReceiptFragment extends Fragment {
                 } else {
                     tvPrice.setText(String.valueOf(abs));
                 }
-
-                shapeDrawable.setTint(ContextCompat.getColor(this.getContext(), R.color.colorMilk));
-                shapeDrawable.setPaintStyle(Paint.Style.FILL);
-                shapeDrawable.setShadowColor(Color.parseColor("#8B535353"));
-                shapeDrawable.setUseTintColorForShadow(true);
                 saleReceiptBinding.linearLayoutItems.addView(itemView);
-                materialCardView.setCardElevation(8);
-                materialCardView.setRadius(5);
-                materialCardView.setBackground(shapeDrawable);
             }
 
             saleReceiptBinding.linearLayoutItems.invalidate();
