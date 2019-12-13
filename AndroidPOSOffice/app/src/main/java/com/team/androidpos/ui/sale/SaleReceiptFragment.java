@@ -101,7 +101,10 @@ public class SaleReceiptFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        MaterialCardView materialCardView = getView().findViewById(R.id.recepit_card);
+        MaterialCardView materialCardView = getView().findViewById(R.id.recepit_card_1);
+        MaterialCardView materialCardView2 = getView().findViewById(R.id.recepit_card_2);
+        MaterialCardView materialCardView3 = getView().findViewById(R.id.recepit_card_3);
+
         ConstraintLayout constraintLayout = getView().findViewById(R.id.recepit_constrait);
 
         EdgeTreatment edgeTreatment = new EdgeTreatment();
@@ -125,6 +128,7 @@ public class SaleReceiptFragment extends Fragment {
         //shapePathModel.setRightEdge(new TriangleEdgeTreatment(8f, true));
         shapePathModel.setAllCorners(new RoundedCornerTreatment(15f));
         shapePathModel.setTopEdge(new EdgeArc(15f));
+        shapePathModel.setBottomEdge(new EdgeArc(15f));
         shapePathModel.setLeftEdge(new TriangleEdgeTreatment(10f, true));
         shapePathModel.setRightEdge(new TriangleEdgeTreatment(10f , true));
         MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable(shapePathModel);

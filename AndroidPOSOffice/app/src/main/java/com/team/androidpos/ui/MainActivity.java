@@ -1,6 +1,7 @@
 package com.team.androidpos.ui;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -29,16 +30,20 @@ public class MainActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle toggle;
 
+    private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
+    private MaterialCardView listContent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
-        MaterialCardView listContent = findViewById(R.id.list_content);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        listContent = findViewById(R.id.list_content);
         //DrawerContent drawerContent = findViewById(R.id.motion_content);
         NavigationView navigationView = findViewById(R.id.navigationView);
 
@@ -54,37 +59,18 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_closed) {
-
-           private float scale = 6f;
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-                super.onDrawerSlide(drawerView, slideOffset);
-                float slideX = drawerView.getWidth() * slideOffset;
-                    listContent.setTranslationX(slideX);
-                    listContent.setTranslationZ(slideX / 2);
-                    listContent.setScaleX(1 - (slideOffset / scale));
-                    listContent.setScaleY(1 - (slideOffset / scale));
-                    if(slideOffset == 1f || slideOffset == 0.5f) {
-                        listContent.setElevation(8f);
-                        listContent.setRadius(20f);
-                        getWindow().setStatusBarColor(Color.parseColor("#242424"));
-                    }else if(slideOffset == 0f || slideOffset == 0.5f) {
-                        listContent.setElevation(0f);
-                        listContent.setRadius(0f);
-                        getWindow().setStatusBarColor(Color.parseColor("#242424")); //#1E8B27
-                    }
-            }
-        };
-        drawerLayout.setScrimColor(Color.TRANSPARENT);
-        drawerLayout.setDrawerElevation(0f);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        toggle.setToolbarNavigationClickListener(v -> {
-            Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp();
-        });
+        getSlideLeftNav();
 
         NavigationUI.setupWithNavController(navigationView, Navigation.findNavController(this, R.id.my_nav_host_fragment));
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE || newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            getSlideLeftNav();
+        }
     }
 
     @Override
@@ -105,6 +91,39 @@ public class MainActivity extends AppCompatActivity {
             view = new View(this);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    private void getSlideLeftNav() {
+
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_closed) {
+
+            private float scale = 6f;
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
+                float slideX = drawerView.getWidth() * slideOffset;
+                listContent.setTranslationX(slideX);
+                listContent.setTranslationZ(slideX / 2);
+                listContent.setScaleX(1 - (slideOffset / scale));
+                listContent.setScaleY(1 - (slideOffset / scale));
+                if(slideOffset == 1f || slideOffset == 0.5f) {
+                    listContent.setElevation(8f);
+                    listContent.setRadius(20f);
+                    getWindow().setStatusBarColor(Color.parseColor("#242424"));
+                }else if(slideOffset == 0f || slideOffset == 0.5f) {
+                    listContent.setElevation(0f);
+                    listContent.setRadius(0f);
+                    getWindow().setStatusBarColor(Color.parseColor("#242424")); //#1E8B27
+                }
+            }
+        };
+        drawerLayout.setScrimColor(Color.TRANSPARENT);
+        drawerLayout.setDrawerElevation(0f);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        toggle.setToolbarNavigationClickListener(v -> {
+            Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp();
+        });
     }
 
 }

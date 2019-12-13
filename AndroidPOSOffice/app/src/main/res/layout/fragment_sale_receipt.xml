@@ -42,7 +42,7 @@
                     app:layout_constraintTop_toTopOf="parent" />-->
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/recepit_card"
+                    android:id="@+id/recepit_card_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -294,8 +294,8 @@
                     android:layout_width="0dp"
                     android:layout_height="108dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/recepit_card"
-                    app:layout_constraintStart_toStartOf="@+id/recepit_card" />
+                    app:layout_constraintEnd_toEndOf="@+id/recepit_card_1"
+                    app:layout_constraintStart_toStartOf="@+id/recepit_card_1" />
 
                 <!--<ImageView
                     android:layout_width="24dp"

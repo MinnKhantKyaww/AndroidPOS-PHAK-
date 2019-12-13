@@ -4,6 +4,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +20,10 @@ import com.team.androidpos.R;
 import com.team.androidpos.model.entity.Sale;
 import com.team.androidpos.ui.AdapterItemClickListener;
 
-public class SaleAdapter extends PagedListAdapter<Sale, SaleAdapter.SaleViewHolder> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class SaleAdapter extends PagedListAdapter<Sale, SaleAdapter.SaleViewHolder> implements  Filterable{
 
     private static final DiffUtil.ItemCallback<Sale> DIFF_CALLBACK = new DiffUtil.ItemCallback<Sale>() {
         @Override
@@ -58,6 +63,36 @@ public class SaleAdapter extends PagedListAdapter<Sale, SaleAdapter.SaleViewHold
     public void setAdapterItemClickListener(AdapterItemClickListener<Sale> adapterItemClickListener) {
         this.adapterItemClickListener = adapterItemClickListener;
     }
+
+    @Override
+    public Filter getFilter() {
+        return null;
+    }
+
+    /*private Filter searchFilter = new Filter() {
+        private SaleViewHolder viewHolder;
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            List<Sale> filteredList = new ArrayList<>();
+
+            viewHolder.itemView.findViewById(R.id.imageView);
+
+            if(constraint == null || constraint.length() == 0) {
+               // filteredList.add()
+            } else  {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+               // for(())
+            }
+            return null;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            notifyDataSetChanged();
+        }
+    }*/
 
     class SaleViewHolder extends RecyclerView.ViewHolder {
 

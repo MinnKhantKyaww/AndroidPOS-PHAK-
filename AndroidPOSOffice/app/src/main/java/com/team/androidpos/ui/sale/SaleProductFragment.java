@@ -83,6 +83,7 @@ public class SaleProductFragment extends ListFragment {
                 Navigation.findNavController(getView()).navigate(R.id.action_saleProductFragment_to_saleDetailFragment);
                 return true;
             case  R.id.action_filter:
+                Navigation.findNavController(getView()).navigate(R.id.action_saleProductFragment_to_saleSearchFilterFragment);
                 return true;
 
             case R.id.action_scan:

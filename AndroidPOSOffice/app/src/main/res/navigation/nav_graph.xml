@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_saleProductFragment_to_saleDetailFragment"
             app:destination="@id/saleDetailFragment" />
+        <action
+            android:id="@+id/action_saleProductFragment_to_saleSearchFilterFragment"
+            app:destination="@id/saleSearchFilterFragment" />
     </fragment>
     <fragment
         android:id="@+id/barcodeScanFragment"
@@ -86,4 +89,9 @@
         android:name="com.team.androidpos.ui.report.SaleReportFragment"
         android:label="fragment_sale_report"
         tools:layout="@layout/fragment_sale_report" />
+    <fragment
+        android:id="@+id/saleSearchFilterFragment"
+        android:name="com.team.androidpos.ui.sale.SaleSearchFilterFragment"
+        android:label="fragment_search_filter"
+        tools:layout="@layout/fragment_search_filter" />
 </navigation>
