@@ -6,7 +6,6 @@
     android:id="@+id/constrainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
     tools:context=".ui.MainActivity">
 
 <androidx.drawerlayout.widget.DrawerLayout
@@ -29,6 +28,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#4E4E4E"
@@ -128,7 +128,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:elevation="0dp"
-        android:background="@color/colorPrimaryDark"
         app:headerLayout="@layout/layout_navigation_header"
         app:itemBackground="@drawable/nav_item_background"
         app:itemTextColor="@color/nav_item_color"

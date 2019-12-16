@@ -1,15 +1,19 @@
 package com.team.androidpos.ui.sale;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,6 +38,7 @@ public class SaleProductFragment extends ListFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
         productAndCategoryAdapter = new ProductAndCategoryAdapter();
         productAndCategoryAdapter.setAdapterItemClickListener(vo -> {
             saleActionViewModel.addProduct(vo);
@@ -101,6 +106,7 @@ public class SaleProductFragment extends ListFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.hide();
     }
@@ -108,6 +114,10 @@ public class SaleProductFragment extends ListFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
+
+
         viewModel.categoryId.setValue(null);
         saleActionViewModel.init();
 

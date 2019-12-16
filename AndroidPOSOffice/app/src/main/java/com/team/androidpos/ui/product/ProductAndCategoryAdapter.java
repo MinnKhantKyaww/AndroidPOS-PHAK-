@@ -23,6 +23,8 @@ import java.util.List;
 
 public class ProductAndCategoryAdapter extends PagedListAdapter<ProductAndCategoryVO, ProductAndCategoryAdapter.ProductAndCategoryViewHolder> {
 
+    boolean isDark = false;
+
     private static final DiffUtil.ItemCallback<ProductAndCategoryVO> DIFF_CALLBACK = new DiffUtil.ItemCallback<ProductAndCategoryVO>() {
         @Override
         public boolean areItemsTheSame(@NonNull ProductAndCategoryVO oldItem, @NonNull ProductAndCategoryVO newItem) {
@@ -53,6 +55,8 @@ public class ProductAndCategoryAdapter extends PagedListAdapter<ProductAndCatego
     public void onBindViewHolder(@NonNull ProductAndCategoryViewHolder holder, int position) {
         holder.bind(getItem(position));
 
+        RecyclerView recyclerView = holder.itemView.findViewById(R.id.recyclerView);
+
         //fade_transition
         ImageView imageView = holder.itemView.findViewById(R.id.imageView);
 
@@ -70,6 +74,9 @@ public class ProductAndCategoryAdapter extends PagedListAdapter<ProductAndCatego
                 holder.itemView.getContext(), R.anim.item_anim_fade_scale));
         textPrice.setAnimation(AnimationUtils.loadAnimation(
                 holder.itemView.getContext(), R.anim.item_anim_fade_scale));
+
+        if(isDark)
+        recyclerView.setBackgroundResource(R.drawable.card_black_bg);
     }
 
     public void setAdapterItemClickListener(AdapterItemClickListener<ProductAndCategoryVO> adapterItemClickListener) {
