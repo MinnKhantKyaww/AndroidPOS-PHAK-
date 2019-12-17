@@ -23,7 +23,7 @@ import java.util.List;
 
 public class ProductAndCategoryAdapter extends PagedListAdapter<ProductAndCategoryVO, ProductAndCategoryAdapter.ProductAndCategoryViewHolder> {
 
-    boolean isDark = false;
+   // boolean isDark = false;
 
     private static final DiffUtil.ItemCallback<ProductAndCategoryVO> DIFF_CALLBACK = new DiffUtil.ItemCallback<ProductAndCategoryVO>() {
         @Override
@@ -75,8 +75,8 @@ public class ProductAndCategoryAdapter extends PagedListAdapter<ProductAndCatego
         textPrice.setAnimation(AnimationUtils.loadAnimation(
                 holder.itemView.getContext(), R.anim.item_anim_fade_scale));
 
-        if(isDark)
-        recyclerView.setBackgroundResource(R.drawable.card_black_bg);
+        /*if(isDark)
+        recyclerView.setBackgroundResource(R.drawable.card_black_bg);*/
     }
 
     public void setAdapterItemClickListener(AdapterItemClickListener<ProductAndCategoryVO> adapterItemClickListener) {

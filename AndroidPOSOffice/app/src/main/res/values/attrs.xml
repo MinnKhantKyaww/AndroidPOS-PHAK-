@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ds">
+        <attr name="rootbackgroundcolor" format="color"/>
+        <attr name="appbarcolor" format="color"/>
+        <attr name="statusbarcolor" format="color"/>
         <attr name="backgroundcolor" format="color"/>
         <attr name="cardbackground" format="color"/>
-        <attr name="navigationbackground" format="color"/>
-        <attr name="appbarcolor" format="color"/>
-        <attr name="iconcolor" format="color"/>
+        <attr name="navsidebarbackground" format="color"/>
+        <attr name="navsideitembackground" format="color"/>
+        <attr name="navsideitemcolorchecked" format="color"/>
+        <attr name="navsideitemcolor" format="color"/>
+        <attr name="recyclerviewcolor" format="color"/>
+        <attr name="fabcolor" format="color"/>
+        <attr name="fabtintcolor" format="color"/>
         <attr name="textcolor" format="color"/>
         <attr name="tintcolor" format="color"/>
+        <attr name="iconcolor" format="color"/>
+        <attr name="hamburgercolor" format="color"/>
+        <attr name="selectioncolor" format="color"/>
+        <attr name="toolbarStyle" format="color"/>
         <attr name="buttoncolor" format="color"/>
     </declare-styleable>
 </resources>

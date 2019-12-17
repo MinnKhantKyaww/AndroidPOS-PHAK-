@@ -54,7 +54,7 @@ public abstract class ListFragment extends Fragment {
         /*int resId = R.anim.layout_anim_slide_right;
         LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);*/
 
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
         //recyclerView.setLayoutAnimation(animationController);
         //recyclerView.scheduleLayoutAnimation();

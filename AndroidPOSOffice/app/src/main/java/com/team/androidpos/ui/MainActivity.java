@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
     private SwitchCompat switchCompat;
     private boolean isDark = false;
-    private ConstraintLayout rootLayoutBg;
-    private AppBarLayout appBarLayoutBg;
-    private NavigationView navBg;
+    //private ConstraintLayout rootLayoutBg;
+    //private AppBarLayout appBarLayoutBg;
+    //private NavigationView navBg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,14 +64,15 @@ public class MainActivity extends AppCompatActivity {
         listContent = findViewById(R.id.list_content);
         //DrawerContent drawerContent = findViewById(R.id.motion_content);
         NavigationView navigationView = findViewById(R.id.navigationView);
-
-        rootLayoutBg = findViewById(R.id.constrainLayout);
+        /*rootLayoutBg = findViewById(R.id.constrainLayout);
         appBarLayoutBg = findViewById(R.id.appBarLayout);
-        navBg = findViewById(R.id.navigationView);
+        navBg = findViewById(R.id.navigationView);*/
 
         MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_switch);
 
         SwitchCompat drawerSwitch = menuItem.getActionView().findViewById(R.id.drawer_switch);
+        getSlideLeftNav();
+
         if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             drawerSwitch.setChecked(true);
         }
@@ -87,8 +88,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        getSlideLeftNav();
 
 
 //       toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -112,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     private void restartApp() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
-        finish();
+        //finish();
     }
 
 

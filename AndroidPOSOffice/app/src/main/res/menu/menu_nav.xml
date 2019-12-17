@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single" >
         <item
             android:id="@+id/saleProductFragment"
-            android:title="Sale" />
+            android:title="Sale"/>
         <item
             android:id="@+id/productsFragment"
             android:checked="false"
@@ -21,12 +21,12 @@
             android:id="@+id/saleReportFragment"
             android:title="Sale Report"></item>
 
-        <item
-            android:id="@+id/nav_switch"
-            android:title="Switch"
-            app:actionLayout="@layout/layout_switch"/>
-
     </group>
+
+    <item
+        android:id="@+id/nav_switch"
+        android:title="Day&amp;Light"
+        app:actionLayout="@layout/layout_switch"/>
 
 
 
