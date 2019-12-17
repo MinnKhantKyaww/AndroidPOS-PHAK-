@@ -12,9 +12,9 @@
         <item name="navsideitembackground">#8B535353</item>
         <item name="navsideitemcolorchecked">#666666</item>
         <item name="navsideitemcolor" android:state_pressed="true">#808080</item>
-        <item name="recyclerviewcolor">#ACACAC</item>
+        <item name="recyclerviewcolor">#4E4E4E</item>
         <item name="fabcolor">#A2A2A2</item>
-        <item name="fabtintcolor">#FBC02D</item>
+        <item name="fabtintcolor">#FFFFFF</item>
         <item name="textcolor">#FAFAFA</item>
         <item name="iconcolor">#FFFFFF</item>
         <item name="hamburgercolor">@style/DrawerArrowStyle</item>
@@ -24,16 +24,17 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
-        <item name="toolbarStyle">#FFFFFF</item>
+        <item name="actionBarTheme">@style/AppTheme.AppbarOverlayDark</item>
+        <!--<item name="toolbarStyle">#FFFFFF</item>
         <item name="actionBarPopupTheme">#FFFFFF</item>
-        <item name="actionBarTheme">#FFFFFF</item>
+        <item name="actionBarTheme">#FFFFFF</item>-->
     </style>
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar" xmlns:android="http://schemas.android.com/apk/res/android">
         <!-- Customize your theme here. -->
         <item name="rootbackgroundcolor">#FCFCFC</item>
         <item name="appbarcolor">#FCFCFC</item>
-        <item name="colorPrimaryDark">#ACABAB</item>
+        <item name="colorPrimaryDark">#F1F1F1</item>
         <!--<item name="colorPrimary">@color/colorPrimary</item>-->
         <item name="colorAccent">#DFDFDF</item>
         <item name="navsidebarbackground">#FFFFFF</item>
@@ -42,7 +43,7 @@
         <item name="navsideitemcolor" android:state_pressed="true">#CCCBCB</item>
         <item name="recyclerviewcolor">#FFFFFF</item>
         <item name="fabcolor">#DADADA</item>
-        <item name="fabtintcolor">#90DD4F</item>
+        <item name="fabtintcolor">#000000</item>
         <item name="textcolor">#414040</item>
         <item name="iconcolor">#000000</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
@@ -51,9 +52,10 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
-        <item name="toolbarStyle">#000000</item>
+        <item name="actionBarTheme">@style/AppTheme.AppbarOverlayDark</item>
+        <!--<item name="toolbarStyle">#000000</item>
         <item name="actionBarPopupTheme">#FFFFFF</item>
-        <item name="actionBarStyle">#000000</item>
+        <item name="actionBarStyle">#000000</item>-->
     </style>
 
     <style name="AppThemeSlide" parent="Theme.MaterialComponents.Light.DarkActionBar">
@@ -73,11 +75,11 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light"/>
 
     <style name="AppTheme.AppbarOverlay" parent="ThemeOverlay.MaterialComponents.Light">
-        <item name="actionBarItemBackground">?attr/iconcolor</item>
+        <item name="android:actionBarStyle">?attr/iconcolor</item>
     </style>
 
     <style name="AppTheme.AppbarOverlayDark" parent="ThemeOverlay.MaterialComponents.Dark">
-        <item name="actionBarItemBackground">?attr/iconcolor</item>
+        <item name="android:itemBackground">?attr/iconcolor</item>
     </style>
 
     <style name="WindowAnimationTransition">

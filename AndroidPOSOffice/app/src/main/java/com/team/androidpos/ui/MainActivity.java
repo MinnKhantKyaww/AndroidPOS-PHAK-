@@ -41,17 +41,15 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private MaterialCardView listContent;
 
-    private SwitchCompat switchCompat;
-    private boolean isDark = false;
-    //private ConstraintLayout rootLayoutBg;
-    //private AppBarLayout appBarLayoutBg;
-    //private NavigationView navBg;
+    private SharePref sharePrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+        sharePrefs = new SharePref(this);
+
+        if(sharePrefs.loadNightMode() == true) {
             setTheme(R.style.darktheme);
         }
 
@@ -62,28 +60,26 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawerLayout);
         listContent = findViewById(R.id.list_content);
-        //DrawerContent drawerContent = findViewById(R.id.motion_content);
         NavigationView navigationView = findViewById(R.id.navigationView);
-        /*rootLayoutBg = findViewById(R.id.constrainLayout);
-        appBarLayoutBg = findViewById(R.id.appBarLayout);
-        navBg = findViewById(R.id.navigationView);*/
 
         MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_switch);
 
         SwitchCompat drawerSwitch = menuItem.getActionView().findViewById(R.id.drawer_switch);
         getSlideLeftNav();
-
-        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+        //AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
+        if(sharePrefs.loadNightMode() == true) {
             drawerSwitch.setChecked(true);
         }
         drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    sharePrefs.setNightMode(true);
                     restartApp();
                 } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    sharePrefs.setNightMode(false);
                     restartApp();
                 }
             }

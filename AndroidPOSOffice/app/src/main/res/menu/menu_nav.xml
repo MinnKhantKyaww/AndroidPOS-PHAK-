@@ -24,8 +24,12 @@
     </group>
 
     <item
+        android:id="@+id/divid"
+        android:title="-----------------------------------------------------"></item>
+
+    <item
         android:id="@+id/nav_switch"
-        android:title="Day&amp;Light"
+        android:title="Day &amp; Light"
         app:actionLayout="@layout/layout_switch"/>
 
 

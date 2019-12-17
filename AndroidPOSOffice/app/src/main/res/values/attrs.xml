@@ -18,9 +18,9 @@
         <attr name="iconcolor" format="color"/>
         <attr name="hamburgercolor" format="color"/>
         <attr name="selectioncolor" format="color"/>
-        <attr name="toolbarstyle" format="color"/>
+        <attr name="actionMenuTextColor" format="color"/><!--
         <attr name="actionbarpopuptheme" format="color"/>
-        <attr name="actionbartheme" format="color"/>
+        <attr name="actionbartheme" format="color"/>-->
         <attr name="buttoncolor" format="color"/>
     </declare-styleable>
 </resources>

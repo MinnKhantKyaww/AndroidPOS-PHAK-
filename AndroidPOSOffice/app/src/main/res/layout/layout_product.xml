@@ -61,6 +61,7 @@
             android:layout_marginBottom="16dp"
             android:textSize="18sp"
             android:text="@{obj.price}"
+            android:textColor="?attr/textcolor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
