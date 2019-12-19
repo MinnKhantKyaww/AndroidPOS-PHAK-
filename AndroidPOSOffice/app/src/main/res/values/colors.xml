@@ -7,7 +7,7 @@
     <color name="colorNavItem">#8B535353</color>
     <color name="colorSkyBlue">#53E3F0</color>
     <color name="colorBlue">#00838F</color>
-    <color name="colorMilk">#6F6D6D</color>
+    <color name="colorMilk">#E44E4E4E</color> <!--6F6D6D-->
     <color name="colorgray">#C5C5C5</color>
     
     <color name="card_bg_color">#f6f6f6</color>
@@ -17,5 +17,7 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+
+
 
 </resources>

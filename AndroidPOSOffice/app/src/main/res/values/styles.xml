@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="darktheme" parent="Theme.MaterialComponents.Light.DarkActionBar" xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="darktheme" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" xmlns:android="http://schemas.android.com/apk/res/android">
         <!-- Customize your theme here. -->
         <item name="rootbackgroundcolor">#4E4E4E</item>
         <item name="appbarcolor">#4E4E4E</item>
@@ -23,8 +23,15 @@
         <item name="editTextStyle">@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="bottomsheetcolor">#4E4E4E</item>
+        <item name="bottomsheetshadowcolor">@color/cardview_dark_background</item>
+        <item name="startgradientbg">#4E4E4E</item>
+        <item name="endgradientbg">#666666</item>
+        <item name="materialcard1bg">#5A5959</item>
+        <item name="materialcard2bg">#464545</item>
+        <item name="cardbackgroundcolor">#E44E4E4E</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
-        <item name="actionBarTheme">@style/AppTheme.AppbarOverlayDark</item>
+        <!--<item name="actionBarTheme">@style/AppTheme.AppbarOverlayDark</item>-->
         <!--<item name="toolbarStyle">#FFFFFF</item>
         <item name="actionBarPopupTheme">#FFFFFF</item>
         <item name="actionBarTheme">#FFFFFF</item>-->
@@ -51,8 +58,15 @@
         <item name="editTextStyle">@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="bottomsheetcolor">#E9E7E7</item>
+        <item name="bottomsheetshadowcolor">#D3D2D2</item>
+        <item name="startgradientbg">#FCFCFC</item>
+        <item name="endgradientbg">#EBEBEB</item>
+        <item name="materialcard1bg">#E7E7E7</item>
+        <item name="materialcard2bg">#DBDBDB</item>
+        <item name="cardbackgroundcolor">#D9FFFFFF</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
-        <item name="actionBarTheme">@style/AppTheme.AppbarOverlayDark</item>
+        <!--<item name="actionBarTheme">@style/AppTheme.AppbarOverlayDark</item>-->
         <!--<item name="toolbarStyle">#000000</item>
         <item name="actionBarPopupTheme">#FFFFFF</item>
         <item name="actionBarStyle">#000000</item>-->

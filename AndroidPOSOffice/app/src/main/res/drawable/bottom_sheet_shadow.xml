@@ -5,7 +5,7 @@
     <item
         android:height="12dp">
 
-        <shape android:tint="@color/cardview_dark_background">
+        <shape android:tint="?attr/bottomsheetshadowcolor">
 
     <gradient
         android:startColor="#997e7e7e"
@@ -22,8 +22,7 @@
     <item android:top="6dp">
 
         <shape>
-            <solid
-                android:color="#4E4E4E"/>
+            <solid android:color="?attr/bottomsheetcolor"/>
 
         </shape>
 

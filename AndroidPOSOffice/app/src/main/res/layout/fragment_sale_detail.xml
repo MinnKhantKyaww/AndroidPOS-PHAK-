@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/saleDetailRecyclerView"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layoutAnimation="@anim/layout_anim_slide_bottom"
@@ -56,11 +56,12 @@
             android:text="CheckOut"
             android:clickable="true"
             android:textAlignment="center"
-            android:textColor="#2C2B2B"
+            android:textColor="?attr/textcolor"
             android:textSize="8pt"
             app:layout_constraintBottom_toBottomOf="@+id/tvTotalPrice"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvTotalPrice" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

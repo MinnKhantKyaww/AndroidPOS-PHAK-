@@ -140,14 +140,17 @@ public class SaleReceiptFragment extends Fragment {
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Rect padding = new Rect();
         padding.set(3, 3, 3, 3);
-        shapeDrawable.setTint(ContextCompat.getColor(this.getContext(), R.color.colorMilk));
+        /*shapeDrawable.setTint(ContextCompat.getColor(this.getContext(), R.color.colorMilk));
         //shapeDrawable.setPaintStyle(Paint.Style.FILL);
         //shapeDrawable.getPadding(padding);
         shapeDrawable.setShadowColor(Color.parseColor("#8B535353"));
-        shapeDrawable.setUseTintColorForShadow(true);
+        shapeDrawable.setUseTintColorForShadow(true);*/
 
-        materialCardView.setBackground(shapeDrawable);
-
+      //
+      /*materialCardView.setCardBackgroundColor(R.attr.cardbackgroundcolor);
+      materialCardView2.setCardBackgroundColor(R.attr.cardbackgroundcolor);
+      materialCardView3.setCardBackgroundColor(R.attr.cardbackgroundcolor);*/
+        //materialCardView.setBackground(shapeDrawable);
         long saleId = getArguments() != null ? getArguments().getLong(KEY_SALE_ID, 0) : 0;
         if (saleId > 0) viewModel.saleId.setValue(saleId);
 
