@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/layout_categories"
-        android:background="?attr/selectableItemBackground">
+        android:layoutAnimation="@anim/layout_anim_slide_bottom"
+        android:background="?attr/backgroundcolor">
 
         <TextView
             android:id="@+id/textView"

@@ -12,14 +12,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/rootbackgroundcolor">
+        android:background="?attr/recyclerviewcolor">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/recepit_constrait"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_recepit"
-            android:layout_marginTop="4dp">
+            android:background="@drawable/gradient_recepit">
 
             <!--<View
                 android:layout_width="35dp"

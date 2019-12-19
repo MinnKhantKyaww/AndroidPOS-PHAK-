@@ -55,8 +55,6 @@ public class ProductAndCategoryAdapter extends PagedListAdapter<ProductAndCatego
     public void onBindViewHolder(@NonNull ProductAndCategoryViewHolder holder, int position) {
         holder.bind(getItem(position));
 
-        RecyclerView recyclerView = holder.itemView.findViewById(R.id.recyclerView);
-
         //fade_transition
         ImageView imageView = holder.itemView.findViewById(R.id.imageView);
 

@@ -7,12 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/rootbackgroundcolor"
+    android:elevation="0dp"
     tools:context=".ui.MainActivity">
 
 <androidx.drawerlayout.widget.DrawerLayout
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:translationZ="2dp">
 
     <!--<include
         layout="@layout/activity_main_content" />
@@ -22,7 +24,8 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/list_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:elevation="0dp">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"

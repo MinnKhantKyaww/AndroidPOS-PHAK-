@@ -1,5 +1,8 @@
 package com.team.androidpos.ui;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -23,6 +26,7 @@ import androidx.constraintlayout.motion.widget.MotionScene;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
@@ -107,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     private void restartApp() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
-        //finish();
+        finish();
     }
 
 
@@ -153,9 +157,16 @@ public class MainActivity extends AppCompatActivity {
                 listContent.setTranslationZ(slideX / 2);
                 listContent.setScaleX(1 - (slideOffset / scale));
                 listContent.setScaleY(1 - (slideOffset / scale));
+                listContent.setTranslationZ(3f);
+                listContent.setElevation(6f);
+                listContent.setRadius(20f);
                 if(slideOffset == 1f || slideOffset == 0.5f) {
-                    listContent.setElevation(8f);
-                    listContent.setRadius(20f);
+                    listContent.animate().translationZ(listContent.getZ() * 2)
+                            .setDuration(1000)
+                            .setInterpolator(new FastOutSlowInInterpolator())
+                            .start();
+                    //listContent.setElevation(6f);
+                    //listContent.setRadius(20f);
                     /*getWindow().setStatusBarColor(Color.parseColor("#242424"));*/
                 }else if(slideOffset == 0f || slideOffset == 0.5f) {
                     listContent.setElevation(0f);

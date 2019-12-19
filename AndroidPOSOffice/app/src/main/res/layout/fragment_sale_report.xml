@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?attr/rootbackgroundcolor">
+    android:background="?attr/recyclerviewcolor">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
@@ -13,6 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +24,7 @@
             android:id="@+id/barChart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?attr/rootbackgroundcolor"/>
+            android:background="?attr/backgroundcolor"/>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -58,8 +59,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        app:cardCornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +72,7 @@
             android:id="@+id/pieChart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?attr/rootbackgroundcolor"/>
+            android:background="?attr/backgroundcolor" />
 
     </com.google.android.material.card.MaterialCardView>
 

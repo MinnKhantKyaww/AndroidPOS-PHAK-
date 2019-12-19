@@ -3,18 +3,19 @@
     <!-- Base application theme. -->
     <style name="darktheme" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" xmlns:android="http://schemas.android.com/apk/res/android">
         <!-- Customize your theme here. -->
-        <item name="rootbackgroundcolor">#4E4E4E</item>
-        <item name="appbarcolor">#4E4E4E</item>
-        <item name="colorPrimaryDark">#4E4E4E</item>
+        <item name="rootbackgroundcolor">#353535</item><!--4E4E4E-->
+        <item name="appbarcolor">#212121</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="backgroundcolor">#212121</item>
         <!--<item name="colorPrimary">@color/colorPrimary</item>-->
-        <item name="colorAccent">#727272</item>
-        <item name="navsidebarbackground">#4E4E4E</item>
+        <item name="colorAccent">#03DAC5</item><!--727272-->
+        <item name="navsidebarbackground">#212121</item>
         <item name="navsideitembackground">#8B535353</item>
         <item name="navsideitemcolorchecked">#666666</item>
-        <item name="navsideitemcolor" android:state_pressed="true">#808080</item>
-        <item name="recyclerviewcolor">#4E4E4E</item>
-        <item name="fabcolor">#A2A2A2</item>
-        <item name="fabtintcolor">#FFFFFF</item>
+        <item name="navsideitemcolor" android:state_pressed="true">#E6E5E5</item>
+        <item name="recyclerviewcolor">#121212</item>
+        <item name="fabcolor">#282929</item>
+        <item name="fabtintcolor">#000000</item>
         <item name="textcolor">#FAFAFA</item>
         <item name="iconcolor">#FFFFFF</item>
         <item name="hamburgercolor">@style/DrawerArrowStyle</item>
@@ -23,18 +24,16 @@
         <item name="editTextStyle">@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="bottomsheetcolor">#4E4E4E</item>
+        <item name="bottomsheetcolor">#212121</item>
         <item name="bottomsheetshadowcolor">@color/cardview_dark_background</item>
-        <item name="startgradientbg">#4E4E4E</item>
-        <item name="endgradientbg">#666666</item>
-        <item name="materialcard1bg">#5A5959</item>
-        <item name="materialcard2bg">#464545</item>
-        <item name="cardbackgroundcolor">#E44E4E4E</item>
+        <item name="startgradientbg">#121212</item>
+        <item name="endgradientbg">#2C2C2C</item>
+        <item name="materialcard1bg">#313131</item>
+        <item name="materialcard2bg">#2B2B2B</item>
+        <item name="cardbackgroundcolor">#212121</item>
+        <item name="android:actionOverflowButtonStyle">@style/overflow</item>
+        <item name="drawarrowleft">@style/DrawerArrowStyle</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
-        <!--<item name="actionBarTheme">@style/AppTheme.AppbarOverlayDark</item>-->
-        <!--<item name="toolbarStyle">#FFFFFF</item>
-        <item name="actionBarPopupTheme">#FFFFFF</item>
-        <item name="actionBarTheme">#FFFFFF</item>-->
     </style>
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar" xmlns:android="http://schemas.android.com/apk/res/android">
@@ -42,6 +41,7 @@
         <item name="rootbackgroundcolor">#FCFCFC</item>
         <item name="appbarcolor">#FCFCFC</item>
         <item name="colorPrimaryDark">#F1F1F1</item>
+        <item name="backgroundcolor">#EBE9E9</item>
         <!--<item name="colorPrimary">@color/colorPrimary</item>-->
         <item name="colorAccent">#DFDFDF</item>
         <item name="navsidebarbackground">#FFFFFF</item>
@@ -65,11 +65,9 @@
         <item name="materialcard1bg">#E7E7E7</item>
         <item name="materialcard2bg">#DBDBDB</item>
         <item name="cardbackgroundcolor">#D9FFFFFF</item>
+        <item name="android:actionOverflowButtonStyle">@style/overflow</item>
+        <item name="drawarrowleft">@style/DrawerArrowStyle</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
-        <!--<item name="actionBarTheme">@style/AppTheme.AppbarOverlayDark</item>-->
-        <!--<item name="toolbarStyle">#000000</item>
-        <item name="actionBarPopupTheme">#FFFFFF</item>
-        <item name="actionBarStyle">#000000</item>-->
     </style>
 
     <style name="AppThemeSlide" parent="Theme.MaterialComponents.Light.DarkActionBar">
@@ -103,8 +101,11 @@
     </style>
 
     <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
-        <item name="spinBars">true</item>
         <item name="color">?attr/iconcolor</item>
+    </style>
+
+    <style name="overflow" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">?attr/iconcolor</item>
     </style>
 
 </resources>

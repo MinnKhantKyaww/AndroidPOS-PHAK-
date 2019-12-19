@@ -26,6 +26,7 @@
         <attr name="materialcard1bg" format="color" />
         <attr name="materialcard2bg" format="color" />
         <attr name="cardbackgroundcolor" format="color"/>
+        <attr name="drawarrowleft" format="color"/>
         <!--<attr name="actionbarpopuptheme" format="color"/>
         <attr name="actionbartheme" format="color"/>-->
         <attr name="buttoncolor" format="color" />

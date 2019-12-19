@@ -1,5 +1,6 @@
 package com.team.androidpos.ui.sale;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.team.androidpos.R;
 import com.team.androidpos.ui.ListFragment;
 import com.team.androidpos.ui.MainActivity;
+import com.team.androidpos.ui.SharePref;
 import com.team.androidpos.ui.product.ProductAndCategoryAdapter;
 import com.team.androidpos.util.PermissionUtil;
 
@@ -34,11 +36,14 @@ public class SaleProductFragment extends ListFragment {
 
     private View notiView;
 
+    private SharePref sharePref;
+
+    private TextView tvCount;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
         productAndCategoryAdapter = new ProductAndCategoryAdapter();
         productAndCategoryAdapter.setAdapterItemClickListener(vo -> {
             saleActionViewModel.addProduct(vo);
@@ -57,6 +62,7 @@ public class SaleProductFragment extends ListFragment {
         inflater.inflate(R.menu.menu_sale, menu);
 
         notiView = menu.findItem(R.id.action_cart).getActionView();
+
         notiView.setOnClickListener(v -> {
 
             Navigation.findNavController(getView()).navigate(R.id.action_saleProductFragment_to_saleDetailFragment);
@@ -68,16 +74,25 @@ public class SaleProductFragment extends ListFragment {
                 return;
             }
 
-            TextView tvCount = notiView.findViewById(R.id.tvSaleProductCount);
+            tvCount = notiView.findViewById(R.id.tvSaleProductCount);
             if(sale.getTotalProduct() > 0) {
                 tvCount.setText(String.valueOf(sale.getTotalProduct()));
+                sharePref.setSaleNoti(sale.getTotalProduct());
                 tvCount.setVisibility(View.VISIBLE);
             } else {
                 tvCount.setVisibility(View.GONE);
             }
+
+
         });
 
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    private void restartApp() {
+        Intent intent = new Intent(getContext().getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+
     }
 
     @Override
@@ -115,9 +130,6 @@ public class SaleProductFragment extends ListFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
-
-
         viewModel.categoryId.setValue(null);
         saleActionViewModel.init();
 
@@ -125,6 +137,9 @@ public class SaleProductFragment extends ListFragment {
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         activity.switchToggle(true);
 
+        sharePref = new SharePref(this);
+
+        tvCount.setText(sharePref.loadSaleCountNoti());
 
     }
 
