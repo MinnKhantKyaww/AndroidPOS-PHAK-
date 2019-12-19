@@ -31,10 +31,18 @@
         tools:layout="@layout/fragment_list_item">
         <action
             android:id="@+id/action_saleProductFragment_to_barcodeScanFragment"
-            app:destination="@id/barcodeScanFragment" />
+            app:destination="@id/barcodeScanFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_out_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_saleProductFragment_to_saleDetailFragment"
-            app:destination="@id/saleDetailFragment" />
+            app:destination="@id/saleDetailFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_saleProductFragment_to_saleSearchFilterFragment"
             app:destination="@id/saleSearchFilterFragment" />
@@ -51,10 +59,17 @@
         tools:layout="@layout/fragment_sale_detail" >
         <action
             android:id="@+id/action_saleDetailFragment_to_saleProductEditFragment"
-            app:destination="@id/saleProductEditFragment" />
+            app:destination="@id/saleProductEditFragment"
+            app:enterAnim="@anim/fade_in"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_saleDetailFragment_to_completeSaleFragment"
-            app:destination="@id/completeSaleFragment" />
+            app:destination="@id/completeSaleFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/saleProductEditFragment"
@@ -68,7 +83,8 @@
         tools:layout="@layout/fragment_complete_sale">
         <action
             android:id="@+id/action_completeSaleFragment_to_saleReceiptFragment"
-            app:destination="@id/saleReceiptFragment" />
+            app:destination="@id/saleReceiptFragment"
+            app:enterAnim="@anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/saleHistoryFragment"
@@ -77,7 +93,9 @@
         tools:layout="@layout/fragment_list_item">
         <action
             android:id="@+id/action_saleHistoryFragment_to_saleReceiptFragment"
-            app:destination="@id/saleReceiptFragment" />
+            app:destination="@id/saleReceiptFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/saleReceiptFragment"

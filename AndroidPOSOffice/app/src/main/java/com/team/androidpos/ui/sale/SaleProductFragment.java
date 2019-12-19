@@ -36,7 +36,7 @@ public class SaleProductFragment extends ListFragment {
 
     private View notiView;
 
-    private SharePref sharePref;
+    public SharePref sharePref;
 
     private TextView tvCount;
 
@@ -44,6 +44,9 @@ public class SaleProductFragment extends ListFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
+        sharePref = new SharePref(this);
+
         productAndCategoryAdapter = new ProductAndCategoryAdapter();
         productAndCategoryAdapter.setAdapterItemClickListener(vo -> {
             saleActionViewModel.addProduct(vo);
@@ -55,6 +58,7 @@ public class SaleProductFragment extends ListFragment {
         viewModel = ViewModelProviders.of(this).get(SaleProductViewModel.class);
         viewModel.products.observe(this, productAndCategoryAdapter::submitList);
 
+
     }
 
     @Override
@@ -63,13 +67,14 @@ public class SaleProductFragment extends ListFragment {
 
         notiView = menu.findItem(R.id.action_cart).getActionView();
 
+
         notiView.setOnClickListener(v -> {
 
             Navigation.findNavController(getView()).navigate(R.id.action_saleProductFragment_to_saleDetailFragment);
         });
 
         saleActionViewModel.sale.observe(this, sale -> {
-
+            SwitchCompat switchCompat = getView().findViewById(R.id.drawer_switch);
             if(notiView == null) {
                 return;
             }
@@ -139,7 +144,6 @@ public class SaleProductFragment extends ListFragment {
 
         sharePref = new SharePref(this);
 
-        tvCount.setText(sharePref.loadSaleCountNoti());
 
     }
 
