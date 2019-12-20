@@ -82,7 +82,7 @@ public class SaleProductFragment extends ListFragment {
             tvCount = notiView.findViewById(R.id.tvSaleProductCount);
             if(sale.getTotalProduct() > 0) {
                 tvCount.setText(String.valueOf(sale.getTotalProduct()));
-                sharePref.setSaleNoti(sale.getTotalProduct());
+                sharePref.setSaleNoti(sale);
                 tvCount.setVisibility(View.VISIBLE);
             } else {
                 tvCount.setVisibility(View.GONE);
@@ -90,6 +90,7 @@ public class SaleProductFragment extends ListFragment {
 
 
         });
+
 
         super.onCreateOptionsMenu(menu, inflater);
     }

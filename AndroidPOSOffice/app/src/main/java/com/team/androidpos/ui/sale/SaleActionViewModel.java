@@ -12,6 +12,7 @@ import com.team.androidpos.model.entity.SaleProduct;
 import com.team.androidpos.model.repo.ProductRepo;
 import com.team.androidpos.model.repo.SaleRepo;
 import com.team.androidpos.model.vo.ProductAndCategoryVO;
+import com.team.androidpos.ui.SharePref;
 import com.team.androidpos.util.AppExecutors;
 
 import java.util.ArrayList;
@@ -34,6 +35,8 @@ public class SaleActionViewModel extends AndroidViewModel {
     public final MutableLiveData<SaleProduct> editSaleProduct = new MutableLiveData<>();
 
     final MutableLiveData<Long> saleResult = new MutableLiveData<>();
+
+    private SharePref sharePref;
 
     public SaleActionViewModel(@NonNull Application application) {
         super(application);
@@ -76,7 +79,6 @@ public class SaleActionViewModel extends AndroidViewModel {
         }
         saleProducts.setValue(map);
         computeSale();
-
     }
 
     void removeProduct(SaleProduct saleProduct) {

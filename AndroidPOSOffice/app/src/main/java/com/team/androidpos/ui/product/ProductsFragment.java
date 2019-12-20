@@ -9,13 +9,14 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.team.androidpos.R;
+import com.team.androidpos.ui.Dismissible;
 import com.team.androidpos.ui.ListFragment;
 
 public class ProductsFragment extends ListFragment {
 
     private ProductAndCategoryAdapter adapter;
     private ProductsViewModel viewModel;
-
+    private ProductEditFragment productEditFragment;
     @Override
     protected RecyclerView.Adapter<? extends RecyclerView.ViewHolder> adapter() {
         if (adapter == null) {
@@ -58,4 +59,5 @@ public class ProductsFragment extends ListFragment {
     @Override
     protected void restoreItemAt() {
     }
+
 }

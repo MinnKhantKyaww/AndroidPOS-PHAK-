@@ -95,7 +95,6 @@ public class CategoriesFragment extends ListFragment {
         }
 
         DialogFragment dialogFragment = new CategoryEditFragment();
-
         if (args != null) {
             dialogFragment.setArguments(args);
         }

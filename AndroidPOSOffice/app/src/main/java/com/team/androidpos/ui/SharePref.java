@@ -3,6 +3,7 @@ package com.team.androidpos.ui;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.team.androidpos.model.entity.Sale;
 import com.team.androidpos.ui.sale.SaleProductFragment;
 
 public class SharePref {
@@ -28,9 +29,9 @@ public class SharePref {
         return mode;
     }
 
-    public void setSaleNoti (int count) {
+    public void setSaleNoti (Sale sale) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("SaleCountNoti", count);
+        editor.putInt("SaleCountNoti", sale.getTotalProduct());
         editor.commit();
     }
 

@@ -1,28 +1,40 @@
 package com.team.androidpos.ui.product;
 
-import android.Manifest;
+import android.animation.Animator;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.provider.MediaStore;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -34,20 +46,22 @@ import com.team.androidpos.R;
 import com.team.androidpos.databinding.ProductEditBinding;
 import com.team.androidpos.model.entity.Category;
 import com.team.androidpos.model.entity.Product;
+import com.team.androidpos.ui.Dismissible;
 import com.team.androidpos.ui.MainActivity;
+import com.team.androidpos.ui.OnBackPressed;
 import com.team.androidpos.util.FileUtil;
 import com.team.androidpos.util.PermissionUtil;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import static android.app.Activity.RESULT_OK;
 
-public class ProductEditFragment extends Fragment {
+public class ProductEditFragment extends Fragment implements OnBackPressed {
 
     static final String KEY_PRODUCT_ID = "product_id";
     private static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -57,8 +71,10 @@ public class ProductEditFragment extends Fragment {
     private ProductEditBinding binding;
     private String currentPhotoFilePath;
 
-    //https://github.com/adrianseraspi12/Android-Tutorials/tree/master/Start%20new%20activity%20with%20circular%20reveal%20transition
+    private View background;
 
+    //https://github.com/adrianseraspi12/Android-Tutorials/tree/master/Start%20new%20activity%20with%20circular%20reveal%20transition
+    //https://github.com/damanpreetsb?tab=repositories
     private final ChipGroup.OnCheckedChangeListener chipCheckListener = (chipGroup, id) -> {
         if (getView() == null) return;
 
@@ -82,11 +98,27 @@ public class ProductEditFragment extends Fragment {
         activity.switchToggle(false);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        if(savedInstanceState == null) {
+
         viewModel = ViewModelProviders.of(this).get(ProductEditViewModel.class);
 
         viewModel.categories.observe(this, categories -> {
             View view = getView();
+            background = view.findViewById(R.id.productEditFragmemnt);
             if (view == null) return;
+            background.setVisibility(View.INVISIBLE);
+            /*;
+            final ViewTreeObserver viewTreeObserver = background.getViewTreeObserver();
+            if(viewTreeObserver.isAlive()) {
+                viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+
+                        background.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    }
+                });
+            }*/
+            circularRevalFragment();
 
             ChipGroup categoryGroup = view.findViewById(R.id.chipGroupCategories);
             categoryGroup.removeAllViews();
@@ -108,15 +140,23 @@ public class ProductEditFragment extends Fragment {
 
             categoryGroup.invalidate();
             categoryGroup.setOnCheckedChangeListener(chipCheckListener);
+
         });
+        }
     }
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
         binding = ProductEditBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);
         binding.setViewModel(viewModel);
+        fragmentTransaction.addToBackStack(null);
+
         return binding.getRoot();
     }
 
@@ -226,7 +266,9 @@ public class ProductEditFragment extends Fragment {
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         activity.switchToggle(true);
         activity.hideKeyboard();
+        onBackPressed();
     }
+
 
     private void dispatchTakePictureIntent() {
         if (!PermissionUtil.hasCameraPermission(this)) {
@@ -276,5 +318,104 @@ public class ProductEditFragment extends Fragment {
         return image;
     }
 
+    private void circularRevalFragment() {
 
+        int hypotenuse = (int) Math.hypot(background.getWidth(), background.getHeight());
+
+        int cx = background.getRight() - getDips(44);
+        int cy = background.getBottom() - getDips(44);
+
+        float finalRadius = Math.max(background.getWidth(), background.getHeight());
+
+        Animator circularReveal = ViewAnimationUtils.createCircularReveal(
+                background,
+                cx,
+                cy,
+                0,
+                hypotenuse);
+
+        circularReveal.setDuration(2000);
+
+        circularReveal.setInterpolator(new FastOutSlowInInterpolator());
+
+        background.setVisibility(View.VISIBLE);
+        circularReveal.start();
+
+    }
+
+    private int getDips(int dps) {
+        Resources resources = getResources();
+        return (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dps,
+                resources.getDisplayMetrics());
+    }
+
+    private void startColorAnimation(final View view, final int startColor, final int endColor, int duration) {
+        ValueAnimator valueAnimator = new ValueAnimator();
+        valueAnimator.setIntValues(startColor, endColor);
+        valueAnimator.setEvaluator(new ArgbEvaluator());
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                view.setBackgroundColor((Integer) animation.getAnimatedValue());
+            }
+        });
+
+        valueAnimator.setDuration(duration);
+        valueAnimator.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            int cx = background.getWidth() - getDips(44);
+            int cy = background.getBottom() - getDips(44);
+
+            float finalRadius = Math.max(background.getWidth(), background.getHeight());
+
+            int hypotenuse = (int) Math.hypot(background.getWidth(), background.getHeight());
+
+            Animator circularReveal = ViewAnimationUtils.createCircularReveal(background, cx, cy, hypotenuse, 0);
+
+            circularReveal.setInterpolator(new FastOutSlowInInterpolator());
+
+            circularReveal.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animator) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animator) {
+                    background.setVisibility(View.INVISIBLE);
+
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animator) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animator) {
+
+                }
+            });
+            circularReveal.setDuration(3000);
+            circularReveal.start();
+        } else {
+            backFragments();
+        }
+
+    }
+
+    private void backFragments() {
+        List<Fragment> fragments = getFragmentManager().getFragments();
+        for(Fragment f : fragments){
+            if(f != null && f instanceof ProductEditFragment)
+                ((ProductEditFragment)f).onBackPressed();
+        }
+        getActivity().getSupportFragmentManager().popBackStack();
+    }
 }

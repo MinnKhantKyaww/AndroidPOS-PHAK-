@@ -17,7 +17,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/recyclerviewcolor">
+            android:background="?attr/recyclerviewcolor"
+            android:focusable="false"
+            android:focusableInTouchMode="true">
 
             <TextView
                 android:id="@+id/textView13"
@@ -46,6 +48,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView13">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/categoryEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@={viewModel.category.name}" />
