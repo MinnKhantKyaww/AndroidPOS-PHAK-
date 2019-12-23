@@ -106,7 +106,7 @@ public class ProductEditFragment extends Fragment implements OnBackPressed {
             View view = getView();
             background = view.findViewById(R.id.productEditFragmemnt);
             if (view == null) return;
-            background.setVisibility(View.INVISIBLE);
+            //background.setVisibility(View.INVISIBLE);
             /*;
             final ViewTreeObserver viewTreeObserver = background.getViewTreeObserver();
             if(viewTreeObserver.isAlive()) {

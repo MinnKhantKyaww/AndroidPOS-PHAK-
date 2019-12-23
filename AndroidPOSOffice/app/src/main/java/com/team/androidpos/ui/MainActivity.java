@@ -1,20 +1,29 @@
 package com.team.androidpos.ui;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
+import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,10 +35,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.motion.widget.MotionScene;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.interpolator.view.animation.FastOutLinearInInterpolator;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.card.MaterialCardView;
@@ -49,13 +62,20 @@ public class MainActivity extends AppCompatActivity {
 
     private SharePref sharePrefs;
 
+    private int AnimatedNumber = 1;
+
+    private ConstraintLayout rootbg;
+    private ValueAnimator reboundAnimator;
+    private ConstraintLayout navHeaderLayout;
+
+    private float mCurProgress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         sharePrefs = new SharePref(this);
 
-        if(sharePrefs.loadNightMode() == true) {
+        if (sharePrefs.loadNightMode() == true) {
             setTheme(R.style.darktheme);
         }
 
@@ -70,23 +90,25 @@ public class MainActivity extends AppCompatActivity {
 
         MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_switch);
 
-        SwitchCompat drawerSwitch = menuItem.getActionView().findViewById(R.id.drawer_switch);
+        MenuItem saleMenuItem = navigationView.getMenu().findItem(R.id.saleProductFragment);
         getSlideLeftNav();
+        startVectorAnimation();
+        SwitchCompat drawerSwitch = menuItem.getActionView().findViewById(R.id.drawer_switch);
         //AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
-        if(sharePrefs.loadNightMode() == true) {
+        if (sharePrefs.loadNightMode() == true) {
             drawerSwitch.setChecked(true);
         }
         drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
+                if (isChecked) {
                     //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     sharePrefs.setNightMode(true);
-                    restartApp();
+                    MainActivity.this.recreate();
                 } else {
                     //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     sharePrefs.setNightMode(false);
-                    restartApp();
+                    MainActivity.this.recreate();
                 }
             }
         });
@@ -104,26 +126,30 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-
-
         NavigationUI.setupWithNavController(navigationView, Navigation.findNavController(this, R.id.my_nav_host_fragment));
 
     }
 
     private void restartApp() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
+        Intent intent = new Intent(this, MainActivity.class);
 
+        startActivity(intent);
+        // finish();
+    }
 
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
-        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE || newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE || newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             getSlideLeftNav();
         }
+    }
+
+    @Override
+    public void recreate() {
+        drawerLayout.closeDrawer(GravityCompat.START, true);
+        super.recreate();
     }
 
     @Override
@@ -146,6 +172,11 @@ public class MainActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
     private void getSlideLeftNav() {
 
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_closed) {
@@ -159,31 +190,101 @@ public class MainActivity extends AppCompatActivity {
                 listContent.setTranslationZ(slideX / 2);
                 listContent.setScaleX(1 - (slideOffset / scale));
                 listContent.setScaleY(1 - (slideOffset / scale));
-                listContent.setTranslationZ(3f);
+                listContent.setTranslationZ(5f);
                 listContent.setElevation(6f);
                 listContent.setRadius(20f);
-                if(slideOffset == 1f || slideOffset == 0.5f) {
+                //animProgress();
+                if (slideOffset == 1f || slideOffset == 0.5f) {
                     listContent.animate().translationZ(listContent.getZ() * 2)
                             .setDuration(1000)
                             .setInterpolator(new FastOutSlowInInterpolator())
                             .start();
+                    startVectorAnimation();
                     //listContent.setElevation(6f);
                     //listContent.setRadius(20f);
                     /*getWindow().setStatusBarColor(Color.parseColor("#242424"));*/
-                }else if(slideOffset == 0f || slideOffset == 0.5f) {
+                } else if (slideOffset == 0f || slideOffset == 0.5f) {
                     listContent.setElevation(0f);
                     listContent.setRadius(0f);
+                    startVectorAnimation();
                     /*getWindow().setStatusBarColor(Color.parseColor("#242424")); //#1E8B27*/
                 }
             }
         };
+
         drawerLayout.setScrimColor(Color.TRANSPARENT);
         drawerLayout.setDrawerElevation(0f);
         drawerLayout.addDrawerListener(toggle);
+
         toggle.syncState();
         toggle.setToolbarNavigationClickListener(v -> {
             Navigation.findNavController(this, R.id.my_nav_host_fragment).navigateUp();
         });
+    }
+
+    private void startVectorAnimation() {
+
+        AnimatedVectorDrawableCompat drawableCompat = null;
+        rootbg = findViewById(R.id.constrainLayout);
+        navHeaderLayout = findViewById(R.id.nav_header_layout);
+
+        switch (AnimatedNumber) {
+             case 1:
+                 drawableCompat = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_1);
+                 break;
+
+             case 2:
+                 drawableCompat = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_2);
+                 break;
+
+             case 3:
+                 drawableCompat = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_3);
+                 break;
+
+             case 4:
+                 drawableCompat = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_4);
+                 break;
+
+             case 5:
+                 drawableCompat = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_5);
+                 AnimatedNumber = 0;
+                 break;
+            default:
+                drawableCompat = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_5);
+        }
+
+        AnimatedNumber++;
+        rootbg.setBackground(drawableCompat);
+        //navigationView.setBackground(drawableCompat);
+        //navHeaderLayout.setBackground(drawableCompat);
+        assert drawableCompat != null;
+        drawableCompat.start();
+    }
+
+    private void animProgress() {
+        if (mCurProgress != 2f) {
+            if (reboundAnimator != null) {
+                reboundAnimator.cancel();
+            }
+            reboundAnimator = ValueAnimator.ofFloat(2f);
+
+            reboundAnimator.setDuration(2000);
+            reboundAnimator.setInterpolator(new FastOutSlowInInterpolator());
+
+            reboundAnimator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    reboundAnimator = null;
+                }
+            });
+            reboundAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    startVectorAnimation();
+                }
+            });
+            reboundAnimator.start();
+        }
     }
 
 }

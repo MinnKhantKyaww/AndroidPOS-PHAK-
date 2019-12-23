@@ -10,6 +10,8 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:translationZ="3dp"
+        android:elevation="2dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -24,7 +26,8 @@
             android:id="@+id/barChart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?attr/backgroundcolor"/>
+            android:background="?attr/backgroundcolor"
+            android:translationZ="5dp"/>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -58,6 +61,8 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:translationZ="3dp"
+        android:elevation="2dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -72,7 +77,8 @@
             android:id="@+id/pieChart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?attr/backgroundcolor" />
+            android:background="?attr/backgroundcolor"
+            android:translationZ="5dp"/>
 
     </com.google.android.material.card.MaterialCardView>
 

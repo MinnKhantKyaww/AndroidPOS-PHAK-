@@ -6,7 +6,6 @@
     android:id="@+id/constrainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/rootbackgroundcolor"
     android:elevation="0dp"
     tools:context=".ui.MainActivity">
 
@@ -43,7 +42,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:popupTheme="?attr/popupTheme"
-                    app:title="@string/app_name"
                     app:titleTextColor="?attr/textcolor" />
 
             </com.google.android.material.appbar.AppBarLayout>
@@ -133,6 +131,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:elevation="0dp"
+        android:alpha="0.9"
         android:background="?attr/navsidebarbackground"
         app:headerLayout="@layout/layout_navigation_header"
         app:itemBackground="@drawable/nav_item_background"

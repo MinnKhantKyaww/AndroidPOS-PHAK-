@@ -1,9 +1,11 @@
 package com.team.androidpos.ui.sale;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,6 +50,7 @@ public class CompleteSaleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.btnCompleteSale.setOnClickListener(v -> {
+            ((MainActivity)getActivity()).hideKeyboard();
             saleActionViewModel.finishSale();
 
         });
@@ -60,4 +63,5 @@ public class CompleteSaleFragment extends Fragment {
         mainActivity.switchToggle(false);
         mainActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
 }
