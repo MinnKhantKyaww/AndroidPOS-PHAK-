@@ -27,8 +27,7 @@
     <fragment
         android:id="@+id/saleProductFragment"
         android:name="com.team.androidpos.ui.sale.SaleProductFragment"
-        android:label="SaleProductFragment"
-        tools:layout="@layout/fragment_list_item">
+        android:label="SaleProductFragment">
         <action
             android:id="@+id/action_saleProductFragment_to_barcodeScanFragment"
             app:destination="@id/barcodeScanFragment"

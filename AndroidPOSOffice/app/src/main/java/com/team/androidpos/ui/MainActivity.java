@@ -194,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 listContent.setElevation(6f);
                 listContent.setRadius(20f);
                 //animProgress();
+                startVectorAnimation();
                 if (slideOffset == 1f || slideOffset == 0.5f) {
                     listContent.animate().translationZ(listContent.getZ() * 2)
                             .setDuration(1000)
