@@ -35,6 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@={viewModel.product.name}" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -161,6 +162,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/divider2"
                 app:layout_constraintStart_toStartOf="@+id/divider2"
                 app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

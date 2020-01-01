@@ -23,7 +23,6 @@ import java.util.List;
 
 public class ProductAndCategoryAdapter extends PagedListAdapter<ProductAndCategoryVO, ProductAndCategoryAdapter.ProductAndCategoryViewHolder> {
 
-   // boolean isDark = false;
 
     private static final DiffUtil.ItemCallback<ProductAndCategoryVO> DIFF_CALLBACK = new DiffUtil.ItemCallback<ProductAndCategoryVO>() {
         @Override
