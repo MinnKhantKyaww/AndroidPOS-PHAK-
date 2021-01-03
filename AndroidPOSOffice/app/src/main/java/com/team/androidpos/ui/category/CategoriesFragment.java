@@ -1,26 +1,29 @@
 package com.team.androidpos.ui.category;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.team.androidpos.R;
-import com.team.androidpos.model.entity.Category;
 import com.team.androidpos.model.vo.CategoryAndProductCountVO;
 import com.team.androidpos.ui.ListFragment;
-import com.team.androidpos.ui.SwipeDeleteGestureCallback;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CategoriesFragment extends ListFragment {
 
@@ -59,19 +62,35 @@ public class CategoriesFragment extends ListFragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        TextView nodData = view.findViewById(R.id.tvNoData);
+        viewModel.getCategories().observe(getViewLifecycleOwner(), list -> {
+            if(list.isEmpty()) {
+                nodData.setVisibility(View.VISIBLE);
+            } else {
+                nodData.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    @Override
     protected void onFabClick(View v) {
         navigateEdit(null);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void deleteItemAt(int position) {
-//        category = adapter.getItemAt(position);
-//        categoryPosition = position;
-//        oldId = adapter.getItemAt(position).getCategory().getId();
-//        oldName = adapter.getItemAt(position).getCategory().getName();
-        viewModel.delete(adapter.getItemAt(position).getCategory().getId());
-       // viewModel.getCategories().getValue().get(position).getCategory().setId(oldId);
-        //adapter.notifyItemRemoved(position);
+       View listCategoryView = getView().findViewById(R.id.frag_list_item);
+        if(adapter.getItemAt(position).getProductCount() > 0) {
+            adapter.notifyItemChanged(position);
+            Snackbar snackbar = Snackbar.make(listCategoryView, "Can't delete category.", Snackbar.LENGTH_LONG);
+            ViewGroup.LayoutParams params = snackbar.getView().getLayoutParams();
+            snackbar.show();
+        } else {
+            viewModel.delete(adapter.getItemAt(position).getCategory().getId());
+        }
     }
 
   @Override
@@ -81,8 +100,8 @@ public class CategoriesFragment extends ListFragment {
 //        //viewModel.getCategories().observe();
 //        // viewModel.getCategories().getValue().add(categoryPosition, category);
 //
-//        //viewModel.getCategories().getValue().add(categoryPosition, category);
-//        // viewModel.getCategories().getValue().add(categoryPosition, adapter.getItemAt(oldData));
+//        viewModel.getCategories().getValue().add(categoryPosition, category);
+//         viewModel.getCategories().getValue().add(categoryPosition, adapter.getItemAt(oldData));
   }
 
 

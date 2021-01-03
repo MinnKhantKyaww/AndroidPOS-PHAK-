@@ -3,11 +3,13 @@ package com.team.androidpos.ui;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.team.androidpos.model.vo.SaleReportVO;
 
 import java.math.RoundingMode;
@@ -50,9 +52,9 @@ public class ChartDataHelper {
         dataSet.setValueTextSize(14f);
         dataSet.setSelectionShift(0f);
 
-        dataSet.setValueFormatter(new ValueFormatter() {
+        dataSet.setValueFormatter(new IValueFormatter() {
             @Override
-            public String getFormattedValue(float value) {
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
                 DecimalFormat df = new DecimalFormat("###,###.#");
                 df.setRoundingMode(RoundingMode.CEILING);
                 return df.format(value) + " %";

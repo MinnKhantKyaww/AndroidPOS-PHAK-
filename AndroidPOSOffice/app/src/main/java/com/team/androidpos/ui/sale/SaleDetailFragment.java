@@ -42,13 +42,13 @@ public class SaleDetailFragment extends ListFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel.saleProducts.observe(this, map -> {
+        viewModel.saleProducts.observe(getViewLifecycleOwner(), map -> {
             List<SaleProduct> list = new ArrayList<>(map.values());
             adapter.submitList(list);
 
         });
 
-        viewModel.sale.observe(this, sale -> {
+        viewModel.sale.observe(getViewLifecycleOwner(), sale -> {
             View view = getView();
             if(view == null) {
                 return;

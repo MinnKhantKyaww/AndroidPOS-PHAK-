@@ -2,7 +2,9 @@ package com.team.androidpos.ui.product;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
@@ -44,6 +46,20 @@ public class ProductsFragment extends ListFragment {
         viewModel.getProducts().observe(this, list -> {
             adapter.submitList(list);
         });
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        TextView nodData = view.findViewById(R.id.tvNoData);
+        viewModel.getProducts().observe(getViewLifecycleOwner(), list -> {
+            if(list.isEmpty()) {
+                nodData.setVisibility(View.VISIBLE);
+            } else {
+                nodData.setVisibility(View.GONE);
+            }
+        });
+
     }
 
     @Override

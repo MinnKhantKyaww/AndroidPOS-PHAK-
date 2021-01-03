@@ -130,6 +130,14 @@ public class SaleProductFragment extends ListFragment {
 
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.hide();
+        TextView nodData = view.findViewById(R.id.tvNoData);
+        viewModel.products.observe(getViewLifecycleOwner(), list -> {
+            if(list.isEmpty()) {
+                nodData.setVisibility(View.VISIBLE);
+            } else {
+                nodData.setVisibility(View.GONE);
+            }
+        });
     }
 
     @Override

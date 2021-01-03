@@ -2,6 +2,7 @@ package com.team.androidpos.ui.sale;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -59,5 +60,13 @@ public class SaleHistoryFragment extends ListFragment {
         super.onViewCreated(view, savedInstanceState);
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.hide();
+        TextView nodData = view.findViewById(R.id.tvNoData);
+        viewModel.sales.observe(getViewLifecycleOwner(), list -> {
+            if(list.isEmpty()) {
+                nodData.setVisibility(View.VISIBLE);
+            } else {
+                nodData.setVisibility(View.GONE);
+            }
+        });
     }
 }

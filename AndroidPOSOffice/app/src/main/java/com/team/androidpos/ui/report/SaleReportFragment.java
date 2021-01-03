@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,10 +13,11 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.team.androidpos.R;
 import com.team.androidpos.model.vo.SaleReportVO;
 import com.team.androidpos.ui.ChartDataHelper;
@@ -68,12 +70,21 @@ public class SaleReportFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        TextView tvNoDataLineChart = getView().findViewById(R.id.tvNoDataLineChart);
+        TextView tvNoDataPieChart = getView().findViewById(R.id.tvNoDataPieChart);
+        viewModel.getSaleReport().observe(getViewLifecycleOwner(), list -> {
 
-        viewModel.getSaleReport().observe(this, list -> {
+            if(list.isEmpty()) {
+                tvNoDataLineChart.setVisibility(View.VISIBLE);
+                tvNoDataPieChart.setVisibility(View.VISIBLE);
+            } else {
+                tvNoDataLineChart.setVisibility(View.GONE);
+                tvNoDataPieChart.setVisibility(View.VISIBLE);
+            }
 
-            barChart.getXAxis().setValueFormatter(new ValueFormatter() {
+            barChart.getXAxis().setValueFormatter(new IAxisValueFormatter() {
                 @Override
-                public String getFormattedValue(float value) {
+                public String getFormattedValue(float value, AxisBase axis) {
                     SaleReportVO vo = list.get((int) (value - 1));
                     return vo.getCategory();
                 }
@@ -84,7 +95,7 @@ public class SaleReportFragment extends Fragment {
 
             PieData pieData = ChartDataHelper.toPieChartData(list);
             pieChart.setData(pieData);
-            pieChart.setCenterText(String.valueOf(pieData.getYValueSum()));
+            pieChart.setCenterText(String.valueOf(pieData.getYValueSum() > 0 ? pieData.getYValueSum() : ""));
             pieChart.animateY(1000);
         });
     }

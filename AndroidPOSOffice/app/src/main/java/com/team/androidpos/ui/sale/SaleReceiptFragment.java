@@ -154,7 +154,7 @@ public class SaleReceiptFragment extends Fragment {
         long saleId = getArguments() != null ? getArguments().getLong(KEY_SALE_ID, 0) : 0;
         if (saleId > 0) viewModel.saleId.setValue(saleId);
 
-        viewModel.saleProductLiveData.observe(this, list -> {
+        viewModel.saleProductLiveData.observe(getViewLifecycleOwner(), list -> {
 
             saleReceiptBinding.linearLayoutItems.removeAllViews();
 

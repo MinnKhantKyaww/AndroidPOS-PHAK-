@@ -5,6 +5,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:duration="1500"
         android:propertyName="pathData"
+        android:interpolator="@android:anim/linear_interpolator"
         android:valueFrom="
  M 82.00,38.00
            C 66.00,48.50 47.50,-10.00 -3.00,31.00

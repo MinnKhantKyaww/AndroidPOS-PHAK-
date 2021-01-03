@@ -4,10 +4,9 @@
 
 
     <objectAnimator
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:duration="1500"
         android:propertyName="pathData"
-
+        android:interpolator="@android:anim/linear_interpolator"
         android:valueFrom="
   M 41.11,18.30
            C 22.30,33.00 13.93,33.63 0.53,29.43

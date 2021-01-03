@@ -9,6 +9,7 @@ import androidx.sqlite.db.SimpleSQLiteQuery;
 import com.team.androidpos.model.dao.ProductDao;
 import com.team.androidpos.model.entity.Category;
 import com.team.androidpos.model.entity.Product;
+import com.team.androidpos.model.task.ProductDeleteAsyncTask;
 import com.team.androidpos.model.vo.ProductAndCategoryVO;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class ProductRepo extends CudRepo<Product> {
     }
 
     public void deleteById(int id) {
-        super.delete(dao.findByIdSync(id));
+        new ProductDeleteAsyncTask(dao).execute(id);
     }
 
     public Product getProductSync(int id) {

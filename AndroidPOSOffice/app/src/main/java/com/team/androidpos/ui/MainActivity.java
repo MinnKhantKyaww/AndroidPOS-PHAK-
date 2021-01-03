@@ -16,6 +16,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.DecelerateInterpolator;
@@ -253,8 +254,9 @@ public class MainActivity extends AppCompatActivity {
             default:
                 drawableCompat = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_5);
         }
-
+        Animation anim = AnimationUtils.loadAnimation(this, R.anim.strip_anim);
         AnimatedNumber++;
+        rootbg.setAnimation(anim);
         rootbg.setBackground(drawableCompat);
         //navigationView.setBackground(drawableCompat);
         //navHeaderLayout.setBackground(drawableCompat);

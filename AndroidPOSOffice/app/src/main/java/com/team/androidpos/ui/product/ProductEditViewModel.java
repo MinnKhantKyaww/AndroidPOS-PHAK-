@@ -24,6 +24,7 @@ public class ProductEditViewModel extends AndroidViewModel {
 
     final MutableLiveData<List<Category>> categories = new MutableLiveData<>();
     final MutableLiveData<Boolean> operation = new MutableLiveData<>();
+    public MutableLiveData<Integer> productId = new MutableLiveData<>();
 
     public ProductEditViewModel(@NonNull Application application) {
         super(application);
@@ -55,6 +56,16 @@ public class ProductEditViewModel extends AndroidViewModel {
                 }
             });
         }
+    }
+
+    void delete() {
+        AppExecutors.io().execute(() -> {
+            try {
+                productRepo.deleteById(productId.getValue());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public boolean isValid() {

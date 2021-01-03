@@ -58,6 +58,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -83,11 +84,11 @@ public class ProductEditFragment extends Fragment implements OnBackPressed {
         Product product = viewModel.product.getValue();
 
         if (chip == null) {
-            product.setCategoryId(0);
+            Objects.requireNonNull(product).setCategoryId(0);
             return;
         }
 
-        product.setCategoryId((Integer) chip.getTag());
+        Objects.requireNonNull(product).setCategoryId((Integer) chip.getTag());
     };
 
     @Override
@@ -131,7 +132,7 @@ public class ProductEditFragment extends Fragment implements OnBackPressed {
                 chip.setText(c.getName());
                 chip.setTag(c.getId());
 
-                if (product.getCategoryId() == c.getId()) {
+                if ((product != null ? product.getCategoryId() : 0) == c.getId()) {
                     chip.setChecked(true);
                 }
 
@@ -214,12 +215,19 @@ public class ProductEditFragment extends Fragment implements OnBackPressed {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        viewModel.operation.observe(this, op -> {
+        viewModel.operation.observe(getViewLifecycleOwner(), op -> {
             if (op) requireActivity().onBackPressed();
         });
 
         int id = getArguments() != null ? getArguments().getInt(KEY_PRODUCT_ID) : 0;
         viewModel.init(id);
+        viewModel.productId.postValue(id);
+
+        View btnDelete = getView().findViewById(R.id.btnDelete);
+        btnDelete.setOnClickListener(it -> {
+            viewModel.delete();
+            requireActivity().onBackPressed();
+        });
     }
 
     @Override
@@ -394,7 +402,6 @@ public class ProductEditFragment extends Fragment implements OnBackPressed {
 
                 @Override
                 public void onAnimationCancel(Animator animator) {
-
                 }
 
                 @Override
