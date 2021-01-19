@@ -79,7 +79,7 @@ public class SaleReportFragment extends Fragment {
                 tvNoDataPieChart.setVisibility(View.VISIBLE);
             } else {
                 tvNoDataLineChart.setVisibility(View.GONE);
-                tvNoDataPieChart.setVisibility(View.VISIBLE);
+                tvNoDataPieChart.setVisibility(View.GONE);
             }
 
             barChart.getXAxis().setValueFormatter(new IAxisValueFormatter() {

@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static androidx.lifecycle.ViewModelProviders.*;
+
 public class CategoriesFragment extends ListFragment {
 
     private CategoriesViewModel viewModel;
@@ -55,7 +57,7 @@ public class CategoriesFragment extends ListFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = ViewModelProviders.of(this).get(CategoriesViewModel.class);
+        viewModel = of(this).get(CategoriesViewModel.class);
         viewModel.getCategories().observe(this, list -> {
             adapter.submitList(list);
         });

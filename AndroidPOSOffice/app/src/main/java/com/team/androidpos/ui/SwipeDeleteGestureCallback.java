@@ -20,6 +20,8 @@ import com.team.androidpos.R;
 import com.team.androidpos.ui.category.CategoriesViewModel;
 import com.team.androidpos.ui.category.CategoryAndProductCountAdapter;
 
+import static com.team.androidpos.R.drawable.ic_delete_white;
+
 public class SwipeDeleteGestureCallback extends ItemTouchHelper.SimpleCallback {
 
     public interface OnSwipeDeleteListener {
@@ -79,9 +81,9 @@ public class SwipeDeleteGestureCallback extends ItemTouchHelper.SimpleCallback {
         if (icon == null) {
             Drawable drawable;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                drawable = context.getResources().getDrawable(R.drawable.ic_delete_white, null);
+                drawable = context.getResources().getDrawable(ic_delete_white, null);
             } else {
-                drawable = context.getResources().getDrawable(R.drawable.ic_delete_white);
+                drawable = context.getResources().getDrawable(ic_delete_white);
             }
 
             icon = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);

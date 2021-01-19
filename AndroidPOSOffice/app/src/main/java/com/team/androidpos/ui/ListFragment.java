@@ -36,7 +36,6 @@ public abstract class ListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_list_item, container, false);
-        RecyclerView recyclerView = root.findViewById(R.id.recyclerView);
 
         int resId = R.anim.layout_anim_slide_bottom;
         /*LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
@@ -51,9 +50,6 @@ public abstract class ListFragment extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         constraintLayout = view.findViewById(R.id.frag_list_item);
-
-        /*int resId = R.anim.layout_anim_slide_right;
-        LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);*/
 
         recyclerView.setHasFixedSize(false);
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
